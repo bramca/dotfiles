@@ -19,6 +19,11 @@ example
 │           ├── custom.el
 │           ├── init.el
 │           └── packages.el
+├── vim
+│   └── linux
+│       ├── .tmux.conf
+│       └── .vimrc
+│
 └── vscode
     └── macos
         ├── keybindings.json
