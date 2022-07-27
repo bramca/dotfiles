@@ -2,7 +2,37 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
+
+
 (package-initialize)
+(when (>= emacs-major-version 24)
+  (require 'package)
+  (add-to-list
+   'package-archives
+   ;; '("melpa" . "http://stable.melpa.org/packages/") ; many packages won't show if using stable
+   '("melpa" . "https://melpa.org/packages/")
+   )
+  )
+
+(require 'cl-lib)
+
+(defvar my-packages
+  '(magit farmhouse-theme org-present pyvenv markdown-mode go-mode typescript-mode tablist svg pug-mode move-text minimap lua-mode json-reformat json-mode js2-mode evil ess auto-complete 2048-game)
+  "A list of packages to ensure are installed at launch.")
+
+(defun my-packages-installed-p ()
+  (cl-loop for p in my-packages
+           when (not (package-installed-p p)) do (cl-return nil)
+           finally (cl-return t)))
+
+(unless (my-packages-installed-p)
+  ;; check for new packages (package versions)
+  (package-refresh-contents)
+  ;; install the missing packages
+  (dolist (p my-packages)
+    (when (not (package-installed-p p))
+      (package-install p))))
+
 ;; scroll one line at a time (less "jumpy" than defaults)
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
@@ -36,15 +66,6 @@
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
-(when (>= emacs-major-version 24)
-  (require 'package)
-  (add-to-list
-   'package-archives
-   ;; '("melpa" . "http://stable.melpa.org/packages/") ; many packages won't show if using stable
-   '("melpa" . "https://melpa.org/packages/")
-   )
-  )
-
 (add-hook 'python-mode-hook
           (lambda () (setq python-indent-offset 4)))
 (defalias 'perl-mode 'cperl-mode)
@@ -76,5 +97,3 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
-(load-theme 'farmhouse-dark)
