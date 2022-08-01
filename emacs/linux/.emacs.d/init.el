@@ -17,7 +17,7 @@
 (require 'cl-lib)
 
 (defvar my-packages
-  '(magit farmhouse-theme org-present pyvenv markdown-mode go-mode typescript-mode tablist svg pug-mode move-text minimap lua-mode json-reformat json-mode js2-mode evil ess auto-complete 2048-game)
+  '(neotree magit farmhouse-theme org-present pyvenv markdown-mode go-mode typescript-mode tablist svg pug-mode move-text minimap lua-mode json-reformat json-mode js2-mode evil ess auto-complete 2048-game)
   "A list of packages to ensure are installed at launch.")
 
 (defun my-packages-installed-p ()
@@ -90,10 +90,12 @@
  '(custom-safe-themes
    '("e8825f26af32403c5ad8bc983f8610a4a4786eb55e3a363fa9acb48e0677fe7e" "cdd26fa6a8c6706c9009db659d2dffd7f4b0350f9cc94e5df657fa295fffec71" "2a739405edf418b8581dcd176aaf695d319f99e3488224a3c495cb0f9fd814e3" default))
  '(package-selected-packages
-   '(magit farmhouse-theme org-present pyvenv markdown-mode go-mode zenburn-theme typescript-mode tablist svg solarized-theme pug-mode powerline pacmacs move-text moe-theme minimap lua-mode json-reformat json-mode js2-mode evil ess dizzee company-tabnine color-theme-sanityinc-tomorrow chess challenger-deep-theme autotetris-mode auto-complete 2048-game)))
+   '(neotree magit farmhouse-theme org-present pyvenv markdown-mode go-mode zenburn-theme typescript-mode tablist svg solarized-theme pug-mode powerline pacmacs move-text moe-theme minimap lua-mode json-reformat json-mode js2-mode evil ess dizzee company-tabnine color-theme-sanityinc-tomorrow chess challenger-deep-theme autotetris-mode auto-complete 2048-game)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(load-theme 'farmhouse-dark)
