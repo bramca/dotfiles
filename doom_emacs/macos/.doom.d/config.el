@@ -27,7 +27,8 @@
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'doom-solarized-dark)
 ;; (setq doom-theme 'doom-molokai)
-(setq doom-theme 'doom-vibrant)
+;; (setq doom-theme 'doom-vibrant)
+(setq doom-theme 'doom-oceanic-next)
 ;; (setq doom-theme 'doom-Iosvkem)
 ;; (setq doom-theme 'doom-gruvbox)
 
@@ -82,6 +83,20 @@
    (setq gnutls-verify-error nil))
  )
 
+(add-hook
+ 'lsp-mode-hook
+ (lambda ()
+   (setq lsp-ui-mode nil)
+   (setq lsp-ui-sideline-enable nil)
+   (setq yas-minor-mode 1))
+ )
+
+(add-hook
+ 'sh-mode-hook
+ (lambda ()
+   (company-mode 0))
+)
+
 ;; for azerty keyboard layout mac
 (setq mac-option-modifier nil)
 (setq mac-command-modifier 'meta)
@@ -95,12 +110,16 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type 'relative)
 
 ;; set tab to always indent instead of rigid tab
 (setq tab-always-indent t)
 
 ;; key bindings
+(map! :leader
+      :desc "disable lsp ui mode"
+      "j" #'lsp-ui-mode)
+
 (map! :leader
       :desc "truncate lines"
       "t t" #'toggle-truncate-lines)
@@ -108,6 +127,7 @@
 (map! :leader
       :desc "go to definition"
       "d" #'evil-goto-definition)
+
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
