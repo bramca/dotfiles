@@ -263,8 +263,9 @@ vim.keymap.set('n', '<C-c><C-c>', [[<Plug>RestNvim<CR>]], { noremap=true })
 
 -- Float Terminal
 vim.keymap.set('n', '<leader>ot', [[:FloatermToggle<CR>]], { desc = '[O]pen [T]erminal' })
-vim.keymap.set('n', '<leader>nt', [[:FloatermNew! cd %:p:h<CR>]], { desc = '[N]ew [T]erminal' })
-vim.keymap.set('n', '<leader>tf', [[:FloattermFirst<CR>]], { desc  = '[T]erminal [F]irst' })
+vim.keymap.set('n', '<leader>nt', [[:FloatermNew!<CR>]], { desc = '[N]ew [T]erminal' })
+vim.keymap.set('n', '<leader>th', [[:FloatermNew! cd %:p:h<CR>]], { desc = 'New [T]erminal [H]ere' })
+vim.keymap.set('n', '<leader>tf', [[:FloatermFirst<CR>]], { desc  = '[T]erminal [F]irst' })
 vim.keymap.set('n', '<leader>tn', [[:FloatermNext<CR>]], { desc = '[T]erminal [N]ext' })
 
 -- Testing
