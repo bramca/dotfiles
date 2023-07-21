@@ -28,9 +28,15 @@
 ;; (setq doom-theme 'doom-solarized-dark)
 ;; (setq doom-theme 'doom-molokai)
 ;; (setq doom-theme 'doom-vibrant)
-(setq doom-theme 'doom-oceanic-next)
+;; (setq doom-theme 'doom-oceanic-next)
 ;; (setq doom-theme 'doom-Iosvkem)
 ;; (setq doom-theme 'doom-gruvbox)
+;; (setq doom-theme 'doom-monokai-machine)
+;; (setq doom-theme 'doom-horizon)
+;; (setq doom-theme 'doom-old-hope)
+(if (display-graphic-p)
+    (setq doom-theme 'doom-oceanic-next)
+  (setq doom-theme 'doom-material))
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -99,6 +105,7 @@
 
 ;; for azerty keyboard layout mac
 (setq mac-option-modifier nil)
+(setq mac-right-option-modifier 'super)
 (setq mac-command-modifier 'meta)
 
 ;; for perl
@@ -115,6 +122,8 @@
 ;; set tab to always indent instead of rigid tab
 (setq tab-always-indent t)
 
+(setq doom-large-file-p t)
+
 ;; key bindings
 (map! :leader
       :desc "disable lsp ui mode"
@@ -127,6 +136,10 @@
 (map! :leader
       :desc "go to definition"
       "d" #'evil-goto-definition)
+
+(map! :leader
+      :desc "describe object at point"
+      "g h" #'lsp-describe-thing-at-point)
 
 
 ;; Here are some additional functions/macros that could help you configure Doom:
