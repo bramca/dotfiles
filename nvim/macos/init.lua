@@ -275,6 +275,9 @@ vim.keymap.set('n', '<leader>ta', [[:TestFile<CR>]], { desc = '[T]est [A]ll in f
 -- Git
 vim.keymap.set('n', '<leader>gg', [[:Git<CR>]], { desc = '[G]it status' })
 
+-- Buffer switch
+vim.keymap.set('n', '<leader>bl', [[:b#<CR>]], { desc = 'Previous [B]uffer' })
+
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
