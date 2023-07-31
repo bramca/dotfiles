@@ -91,14 +91,18 @@ require('packer').startup(function(use)
   -- Float Terminal
   use 'voldikss/vim-floaterm'
 
-  -- Test wrapper
-  use {
-    "klen/nvim-test",
+  -- Org Mode
+  use {'nvim-orgmode/orgmode',
     config = function()
-      require('nvim-test').setup()
-    end
+      require('orgmode').setup{}
+      require('orgmode').setup_ts_grammar()
+    end,
+    after = 'nvim-treesitter',
   }
-   
+
+  -- Test wrapper
+  use "klen/nvim-test"
+
   -- Auto change dir
   use 'airblade/vim-rooter'
 
@@ -108,6 +112,7 @@ require('packer').startup(function(use)
   use 'lewis6991/gitsigns.nvim'
 
   use 'navarasu/onedark.nvim' -- Theme inspired by Atom
+  use "rebelot/kanagawa.nvim" -- Kanagawa Theme
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
@@ -183,7 +188,7 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme onedark]]
+vim.cmd [[colorscheme kanagawa-wave]]
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -219,10 +224,18 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 require('lualine').setup {
   options = {
     icons_enabled = false,
-    theme = 'onedark',
+    theme = 'kanagawa',
     component_separators = '|',
     section_separators = '',
   },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {{'filename', path=1}},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  }
 }
 
 -- Enable Comment.nvim
@@ -293,8 +306,11 @@ vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { des
 vim.keymap.set('n', '<leader>fd', function()
   require('telescope.builtin').find_files({ cwd = '~/Documents/develop' })
 end, { desc = 'Search [F]iles in [D]evelop' })
+vim.keymap.set('n', '<leader>fn', function()
+  require('telescope.builtin').find_files({ cwd = '~/Documents/org' })
+end, { desc = 'Search [F]iles in [N]otes' })
 vim.keymap.set('n', '<leader>fh', function()
-  require('telescope.builtin').find_files({ cwd = '~' })
+  require('telescope.builtin').find_files({ cwd = '~/Documents', file_ignore_patterns = { 'venv', 'node_modules', 'lib', 'vrealize-build' } })
 end, { desc = 'Search [F]iles in [H]ome directory' })
 vim.keymap.set('n', '<leader>sc', function()
   require('telescope.builtin').find_files({ cwd = require('telescope.utils').buffer_dir(), no_ignore=true })
