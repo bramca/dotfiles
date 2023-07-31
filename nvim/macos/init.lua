@@ -91,6 +91,16 @@ require('packer').startup(function(use)
   -- Float Terminal
   use 'voldikss/vim-floaterm'
 
+  -- Nvim Tree
+  use {
+    'nvim-tree/nvim-tree.lua',
+    config = function()
+      require('nvim-tree').setup({
+        update_cwd = true,
+      })
+    end
+  }
+
   -- Org Mode
   use {'nvim-orgmode/orgmode',
     config = function()
@@ -99,7 +109,7 @@ require('packer').startup(function(use)
     end,
     after = 'nvim-treesitter',
   }
-
+  
   -- Test wrapper
   use "klen/nvim-test"
 
@@ -274,6 +284,9 @@ vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap=true })
 -- REST Client
 vim.keymap.set('n', '<C-c><C-c>', [[<Plug>RestNvim<CR>]], { noremap=true })
 
+-- Nvim Tree
+vim.keymap.set('n', '<leader>to', [[:NvimTreeToggle<CR>]], { desc = '[T]ree [O]pen' })
+
 -- Float Terminal
 vim.keymap.set('n', '<leader>ot', [[:FloatermToggle<CR>]], { desc = '[O]pen [T]erminal' })
 vim.keymap.set('n', '<leader>nt', [[:FloatermNew!<CR>]], { desc = '[N]ew [T]erminal' })
@@ -303,6 +316,9 @@ vim.keymap.set('n', '<leader>/', function()
 end, { desc = '[/] Fuzzily search in current buffer]' })
 
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>fs', function()
+  require('telescope.builtin').find_files({ no_ignore=true })
+end, { desc = '[F]ile [S]earch no ignore' })
 vim.keymap.set('n', '<leader>fd', function()
   require('telescope.builtin').find_files({ cwd = '~/Documents/develop' })
 end, { desc = 'Search [F]iles in [D]evelop' })
