@@ -97,6 +97,25 @@ require('packer').startup(function(use)
     config = function()
       require('nvim-tree').setup({
         update_cwd = true,
+        renderer = {
+          icons = {
+            show = {
+              file = false,
+              folder_arrow = false,
+            },
+            glyphs = {
+              folder = {
+                default = ">",
+                open = "v",
+                empty = ">",
+                empty_open = "v", 
+              }
+            },
+          },
+          indent_markers = {
+            enable = true,
+          }
+        }
       })
     end
   }
@@ -111,7 +130,12 @@ require('packer').startup(function(use)
   }
   
   -- Test wrapper
-  use "klen/nvim-test"
+  use {
+    "klen/nvim-test",
+    config = function()
+      require('nvim-test').setup()
+    end
+  }
 
   -- Auto change dir
   use 'airblade/vim-rooter'
