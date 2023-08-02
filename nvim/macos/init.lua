@@ -7,6 +7,9 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.cmd [[packadd packer.nvim]]
 end
 
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 require('packer').startup(function(use)
   -- Package manager
   use 'wbthomason/packer.nvim'
@@ -96,6 +99,7 @@ require('packer').startup(function(use)
     'nvim-tree/nvim-tree.lua',
     config = function()
       require('nvim-tree').setup({
+        disable_netrw = true,
         update_cwd = true,
         renderer = {
           icons = {
