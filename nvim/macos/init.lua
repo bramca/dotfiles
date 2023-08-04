@@ -328,6 +328,8 @@ vim.keymap.set('n', '<leader>nt', [[:FloatermNew!<CR>]], { desc = '[N]ew [T]ermi
 vim.keymap.set('n', '<leader>th', [[:FloatermNew! cd %:p:h<CR>]], { desc = 'New [T]erminal [H]ere' })
 vim.keymap.set('n', '<leader>tf', [[:FloatermFirst<CR>]], { desc  = '[T]erminal [F]irst' })
 vim.keymap.set('n', '<leader>tn', [[:FloatermNext<CR>]], { desc = '[T]erminal [N]ext' })
+vim.keymap.set('n', '<leader>tg', [[:FloatermNew gitui<CR>]], { desc = '[T]erminal [G]it' })
+vim.keymap.set('n', '<leader>tp', [[:FloatermNew btop<CR>]], { desc = '[T]erminal [P]rocesses' })
 
 -- Testing
 vim.keymap.set('n', '<leader>tt', [[:TestNearest<CR>]], { desc = '[T]est Nearest' })
