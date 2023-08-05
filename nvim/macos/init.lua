@@ -331,6 +331,9 @@ vim.keymap.set('n', '<leader>tn', [[:FloatermNext<CR>]], { desc = '[T]erminal [N
 vim.keymap.set('n', '<leader>gu', [[:FloatermNew gitui<CR>]], { desc = '[G]it [U]i' })
 vim.keymap.set('n', '<leader>tp', [[:FloatermNew btop<CR>]], { desc = '[T]erminal [P]rocesses' })
 
+-- Terminal
+vim.keymap.set('n', '<leader>tv', [[:vsplit | terminal<CR>]], { desc = '[T]erminal in [V]ertical split' })
+
 -- Testing
 vim.keymap.set('n', '<leader>tt', [[:TestNearest<CR>]], { desc = '[T]est Nearest' })
 vim.keymap.set('n', '<leader>ta', [[:TestFile<CR>]], { desc = '[T]est [A]ll in file' })
