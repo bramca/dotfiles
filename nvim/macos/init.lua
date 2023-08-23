@@ -334,9 +334,10 @@ vim.keymap.set('n', '<leader>tp', [[:FloatermNew btop<CR>]], { desc = '[T]ermina
 
 -- Terminal
 vim.keymap.set('n', '<leader>tv', [[:vsplit | terminal<CR>]], { desc = '[T]erminal in [V]ertical split' })
+vim.keymap.set('n', '<leader>ts', [[:split | terminal<CR>]], { desc = '[T]erminal in horizontal [S]plit' })
+vim.keymap.set('n', '<leader>tt', [[:tabnew | terminal<CR>]], { desc = '[T]erminal in new [T]ab' })
 
 -- Testing
-vim.keymap.set('n', '<leader>tt', [[:TestNearest<CR>]], { desc = '[T]est Nearest' })
 vim.keymap.set('n', '<leader>ta', [[:TestFile<CR>]], { desc = '[T]est [A]ll in file' })
 
 -- Git
