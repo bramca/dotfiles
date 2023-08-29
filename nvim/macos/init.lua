@@ -236,7 +236,7 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme ayu-dark]]
+vim.cmd [[colorscheme catppuccin-mocha]]
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -272,7 +272,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 require('lualine').setup {
   options = {
     icons_enabled = false,
-    theme = 'ayu',
+    theme = 'catppuccin',
     component_separators = '|',
     section_separators = '',
   },
