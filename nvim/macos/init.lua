@@ -106,6 +106,7 @@ require('packer').startup(function(use)
             show = {
               file = false,
               folder_arrow = false,
+              git = false,
             },
             glyphs = {
               folder = {
