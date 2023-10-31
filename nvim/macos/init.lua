@@ -94,6 +94,9 @@ require('packer').startup(function(use)
   -- Float Terminal
   use 'voldikss/vim-floaterm'
 
+  -- Lua Line time
+  use 'archibate/lualine-time'
+
   -- Nvim Tree
   use {
     'nvim-tree/nvim-tree.lua',
@@ -125,15 +128,6 @@ require('packer').startup(function(use)
     end
   }
 
-  -- Org Mode
-  use {'nvim-orgmode/orgmode',
-    config = function()
-      require('orgmode').setup{}
-      require('orgmode').setup_ts_grammar()
-    end,
-    after = 'nvim-treesitter',
-  }
-
   -- Test wrapper
   use {
     "klen/nvim-test",
@@ -157,10 +151,8 @@ require('packer').startup(function(use)
   use 'tpope/vim-rhubarb'
   use 'lewis6991/gitsigns.nvim'
 
-  use 'navarasu/onedark.nvim' -- Theme inspired by Atom
-  use 'folke/tokyonight.nvim' -- Tokyo Night Theme
   use 'catppuccin/nvim' -- Catppuccin Theme
-  use 'Shatur/neovim-ayu' -- Ayu Theme
+  use 'rebelot/kanagawa.nvim' -- Kanagawa Theme
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
@@ -237,7 +229,7 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme catppuccin-macchiato]]
+vim.cmd [[colorscheme kanagawa-wave]]
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -273,7 +265,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 require('lualine').setup {
   options = {
     icons_enabled = false,
-    theme = 'catppuccin',
+    theme = 'kanagawa',
     component_separators = '|',
     section_separators = '',
   },
@@ -281,7 +273,7 @@ require('lualine').setup {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff', 'diagnostics'},
     lualine_c = {{'filename', path=1}},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_x = {'encoding', 'fileformat', 'filetype', 'ctime'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
   }
@@ -292,10 +284,7 @@ require('Comment').setup()
 
 -- Enable `lukas-reineke/indent-blankline.nvim`
 -- See `:help indent_blankline.txt`
-require('indent_blankline').setup {
-  char = '┊',
-  show_trailing_blankline_indent = false,
-}
+require('ibl').setup()
 
 -- Gitsigns
 -- See `:help gitsigns.txt`
@@ -332,7 +321,7 @@ vim.keymap.set('n', '<leader>nt', [[:FloatermNew!<CR>]], { desc = '[N]ew [T]ermi
 vim.keymap.set('n', '<leader>th', [[:FloatermNew! cd %:p:h<CR>]], { desc = 'New [T]erminal [H]ere' })
 vim.keymap.set('n', '<leader>tf', [[:FloatermFirst<CR>]], { desc  = '[T]erminal [F]irst' })
 vim.keymap.set('n', '<leader>tn', [[:FloatermNext<CR>]], { desc = '[T]erminal [N]ext' })
-vim.keymap.set('n', '<leader>gu', [[:FloatermNew gitui<CR>]], { desc = '[G]it [U]i' })
+vim.keymap.set('n', '<leader>gu', [[:FloatermNew lazygit<CR>]], { desc = '[G]it [U]i' })
 vim.keymap.set('n', '<leader>tp', [[:FloatermNew btop<CR>]], { desc = '[T]erminal [P]rocesses' })
 
 -- Terminal
@@ -366,13 +355,13 @@ vim.keymap.set('n', '<leader>fs', function()
   require('telescope.builtin').find_files({ no_ignore=true })
 end, { desc = '[F]ile [S]earch no ignore' })
 vim.keymap.set('n', '<leader>fd', function()
-  require('telescope.builtin').find_files({ cwd = '~/Documents/develop' })
+  require('telescope.builtin').find_files({ cwd = '~/dev' })
 end, { desc = 'Search [F]iles in [D]evelop' })
 vim.keymap.set('n', '<leader>fn', function()
-  require('telescope.builtin').find_files({ cwd = '~/Documents/org' })
+  require('telescope.builtin').find_files({ cwd = '~/notes' })
 end, { desc = 'Search [F]iles in [N]otes' })
 vim.keymap.set('n', '<leader>fh', function()
-  require('telescope.builtin').find_files({ cwd = '~/Documents', file_ignore_patterns = { 'venv', 'node_modules', 'lib', 'vrealize-build' } })
+  require('telescope.builtin').find_files({ cwd = '~', file_ignore_patterns = { 'venv', 'node_modules', 'lib', 'vrealize-build' } })
 end, { desc = 'Search [F]iles in [H]ome directory' })
 vim.keymap.set('n', '<leader>sc', function()
   require('telescope.builtin').find_files({ cwd = require('telescope.utils').buffer_dir(), no_ignore=true })
@@ -383,7 +372,7 @@ vim.keymap.set('n', '<leader>gh', function()
   require('telescope.builtin').live_grep({ cwd = require('telescope.utils').buffer_dir() })
 end, { desc = 'Search by [G]rep [H]ere'})
 vim.keymap.set('n', '<leader>sn', function()
-  require('telescope.builtin').live_grep({ cwd = '~/Documents/org' })
+  require('telescope.builtin').live_grep({ cwd = '~/notes' })
 end, { desc = '[S]earch by Grep in [N]otes'})
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
@@ -392,7 +381,8 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help', 'vim' },
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'vim' },
+  ignore_install = { 'help' },
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
