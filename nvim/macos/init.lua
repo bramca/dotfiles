@@ -108,6 +108,30 @@ require('packer').startup(function(use)
   -- Lua Line time
   use 'archibate/lualine-time'
 
+  -- DAP (Debug Adapter Protocol)
+  use 'mfussenegger/nvim-dap'
+  use {
+    'leoluz/nvim-dap-go',
+    config = function()
+      require('dap-go').setup()
+    end
+  }
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+  local dap, dapui = require("dap"), require("dapui")
+  dapui.setup()
+  dap.listeners.before.attach.dapui_config = function()
+    dapui.open()
+  end
+  dap.listeners.before.launch.dapui_config = function()
+    dapui.open()
+  end
+  dap.listeners.before.event_terminated.dapui_config = function()
+    dapui.close()
+  end
+  dap.listeners.before.event_exited.dapui_config = function()
+    dapui.close()
+  end
+
   -- Nvim Tree
   use {
     'nvim-tree/nvim-tree.lua',
@@ -338,17 +362,25 @@ vim.keymap.set('n', '<leader>tp', [[:FloatermNew btop<CR>]], { desc = '[T]ermina
 -- Terminal
 vim.keymap.set('n', '<leader>tv', [[:vsplit | terminal<CR>]], { desc = '[T]erminal in [V]ertical split' })
 vim.keymap.set('n', '<leader>tx', [[:split | terminal<CR>]], { desc = '[T]erminal in horizontal [S]plit' })
-vim.keymap.set('n', '<leader>tt', [[:tabnew | terminal<CR>]], { desc = '[T]erminal in new [T]ab' })
+vim.keymap.set('n', '<leader>tb', [[:tabnew | terminal<CR>]], { desc = '[T]erminal in new [T]ab' })
 
 -- Testing
 vim.keymap.set('n', '<leader>ta', [[:TestFile<CR>]], { desc = '[T]est [A]ll in file' })
 vim.keymap.set('n', '<leader>ts', [[:TestNearest<CR>]], { desc = '[T]est Neare[S]t' })
+vim.keymap.set('n', '<leader>td', [[:lua require('dap-go').debug_test()<CR>]], { desc = '[T]est [D]ebug' })
 
 -- Git
 vim.keymap.set('n', '<leader>gg', [[:Git<CR>]], { desc = '[G]it status' })
 
 -- Buffer switch
 vim.keymap.set('n', '<leader>bl', [[:b#<CR>]], { desc = 'Previous [B]uffer' })
+
+-- DAP (Debug Adapter Protocol)
+vim.keymap.set('n', '<F5>', require 'dap'.continue)
+vim.keymap.set('n', '<F10>', require 'dap'.step_over)
+vim.keymap.set('n', '<F11>', require 'dap'.step_into)
+vim.keymap.set('n', '<F12>', require 'dap'.step_out)
+vim.keymap.set('n', '<leader>b', require 'dap'.toggle_breakpoint)
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
@@ -382,6 +414,9 @@ vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc
 vim.keymap.set('n', '<leader>gh', function()
   require('telescope.builtin').live_grep({ cwd = require('telescope.utils').buffer_dir() })
 end, { desc = 'Search by [G]rep [H]ere'})
+vim.keymap.set('n', '<leader>gd', function()
+  require('telescope.builtin').live_grep({ cwd = '~/dev' })
+end, { desc = 'Search by [G]rep in [D]evelop'})
 vim.keymap.set('n', '<leader>sn', function()
   require('telescope.builtin').live_grep({ cwd = '~/notes' })
 end, { desc = '[S]earch by Grep in [N]otes'})
