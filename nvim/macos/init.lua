@@ -131,6 +131,8 @@ require('packer').startup(function(use)
   dap.listeners.before.event_exited.dapui_config = function()
     dapui.close()
   end
+  vim.fn.sign_define('DapBreakpoint',{ text = '🔴', texthl = '', linehl = '', numhl = ''})
+  vim.fn.sign_define('DapStopped',{ text = '⏩', texthl = '', linehl = '', numhl = ''})
 
   -- Nvim Tree
   use {
@@ -299,7 +301,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- See `:help lualine.txt`
 require('lualine').setup {
   options = {
-    icons_enabled = false,
+    icons_enabled = true,
     theme = 'kanagawa',
     component_separators = '|',
     section_separators = '',
@@ -382,6 +384,7 @@ vim.keymap.set('n', '<F11>', require 'dap'.step_into)
 vim.keymap.set('n', '<F12>', require 'dap'.step_out)
 vim.keymap.set('n', '<leader>b', require 'dap'.toggle_breakpoint)
 vim.keymap.set('n', '<leader>cab', require 'dap'.clear_breakpoints)
+vim.keymap.set('n', '<leader>dt', require 'dap'.terminate)
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
