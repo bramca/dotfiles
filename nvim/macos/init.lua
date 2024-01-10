@@ -381,6 +381,7 @@ vim.keymap.set('n', '<F10>', require 'dap'.step_over)
 vim.keymap.set('n', '<F11>', require 'dap'.step_into)
 vim.keymap.set('n', '<F12>', require 'dap'.step_out)
 vim.keymap.set('n', '<leader>b', require 'dap'.toggle_breakpoint)
+vim.keymap.set('n', '<leader>cab', require 'dap'.clear_breakpoints)
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
