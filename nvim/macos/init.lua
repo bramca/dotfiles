@@ -385,6 +385,7 @@ vim.keymap.set('n', '<F12>', require 'dap'.step_out)
 vim.keymap.set('n', '<leader>b', require 'dap'.toggle_breakpoint)
 vim.keymap.set('n', '<leader>cab', require 'dap'.clear_breakpoints)
 vim.keymap.set('n', '<leader>dt', require 'dap'.terminate)
+vim.keymap.set('n', '<leader>fv', [[:lua require('dapui').float_element('scopes')<CR>:lua require('dapui').float_element('scopes')<CR>]], { desc = '[F]loating [V]ariables window'})
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
