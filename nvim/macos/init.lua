@@ -61,6 +61,7 @@ require('packer').startup(function(use)
   use {
     "rest-nvim/rest.nvim",
     requires = { "nvim-lua/plenary.nvim" },
+    commit = "45b52200b4a7712a68579d9d13945427e2764725",
     config = function()
       require("rest-nvim").setup({
         -- Open request results in a horizontal split
@@ -110,13 +111,14 @@ require('packer').startup(function(use)
 
   -- DAP (Debug Adapter Protocol)
   use 'mfussenegger/nvim-dap'
+  use 'nvim-neotest/nvim-nio'
   use {
     'leoluz/nvim-dap-go',
     config = function()
       require('dap-go').setup()
     end
   }
-  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} }
   local dap, dapui = require("dap"), require("dapui")
   dapui.setup()
   dap.listeners.before.attach.dapui_config = function()
@@ -267,7 +269,7 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme kanagawa-wave]]
+vim.cmd [[colorscheme catppuccin-macchiato]]
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -303,7 +305,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'kanagawa',
+    theme = 'catppuccin',
     component_separators = '|',
     section_separators = '',
   },
@@ -433,7 +435,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'vim', 'http', 'javascript' },
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'vim', 'http', 'javascript', 'astro' },
   ignore_install = { 'help' },
 
   highlight = { enable = true },
