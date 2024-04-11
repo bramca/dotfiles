@@ -57,6 +57,28 @@ require('packer').startup(function(use)
   -- Table mode
   use 'dhruvasagar/vim-table-mode'
 
+  -- CSV
+  use {
+    'cameron-wags/rainbow_csv.nvim',
+    config = function()
+      require 'rainbow_csv'.setup()
+    end,
+    -- optional lazy-loading below
+    module = {
+      'rainbow_csv',
+      'rainbow_csv.fns'
+    },
+    ft = {
+      'csv',
+      'tsv',
+      'csv_semicolon',
+      'csv_whitespace',
+      'csv_pipe',
+      'rfc_csv',
+      'rfc_semicolon'
+    }
+  }
+
   -- REST Client
   use {
     "rest-nvim/rest.nvim",
@@ -269,7 +291,7 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme catppuccin-macchiato]]
+vim.cmd [[colorscheme kanagawa-wave]]
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -305,7 +327,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'catppuccin',
+    theme = 'kanagawa',
     component_separators = '|',
     section_separators = '',
   },
