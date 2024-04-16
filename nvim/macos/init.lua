@@ -49,7 +49,6 @@ require('packer').startup(function(use)
   -- Org mode
   use {'nvim-orgmode/orgmode', config = function()
     -- Load treesitter grammar for org
-    require('orgmode').setup_ts_grammar()
     require('orgmode').setup{}
   end
   }
@@ -190,12 +189,34 @@ require('packer').startup(function(use)
   }
 
   -- Test wrapper
-  use {
-    "klen/nvim-test",
+  use({
+    "nvim-neotest/neotest",
+    requires = {
+      "nvim-neotest/neotest-go",
+      -- Your other test adapters here
+    },
     config = function()
-      require('nvim-test').setup()
-    end
-  }
+      -- get neotest namespace (api call creates or returns namespace)
+      local neotest_ns = vim.api.nvim_create_namespace("neotest")
+      vim.diagnostic.config({
+        virtual_text = {
+          format = function(diagnostic)
+            local message =
+            diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
+            return message
+          end,
+        },
+      }, neotest_ns)
+      require("neotest").setup({
+        -- your neotest config here
+        adapters = {
+          require("neotest-go")({
+            recursive_run = true
+          }),
+        },
+      })
+    end,
+  })
 
   -- Auto change dir
   use 'airblade/vim-rooter'
@@ -392,8 +413,13 @@ vim.keymap.set('n', '<leader>tx', [[:split | terminal<CR>]], { desc = '[T]ermina
 vim.keymap.set('n', '<leader>tb', [[:tabnew | terminal<CR>]], { desc = '[T]erminal in new [T]ab' })
 
 -- Testing
-vim.keymap.set('n', '<leader>ta', [[:TestFile<CR>]], { desc = '[T]est [A]ll in file' })
-vim.keymap.set('n', '<leader>ts', [[:TestNearest<CR>]], { desc = '[T]est Neare[S]t' })
+vim.keymap.set('n', '<leader>ta', [[:lua require('neotest').run.run(vim.fn.expand('%'))<CR>]], { desc = '[T]est [A]ll in file' })
+vim.keymap.set('n', '<leader>ts', [[:lua require('neotest').run.run()<CR>]], { desc = '[T]est Neare[S]t' })
+vim.keymap.set('n', '<leader>tr', [[:lua require('neotest').run.run({vim.fn.getcwd(), extra_args = {'./...'}})<CR>]], { desc = '[T]est project [R]oot' })
+vim.keymap.set('n', '<leader>os', [[:lua require('neotest').summary.open()<CR>]], { desc = '[O]pen [S]ummary' })
+vim.keymap.set('n', '<leader>cs', [[:lua require('neotest').summary.close()<CR>]], { desc = '[C]lose [S]ummary' })
+vim.keymap.set('n', '<leader>oo', [[:lua require('neotest').output_panel.open()<CR>]], { desc = '[O]pen [O]utput panel' })
+vim.keymap.set('n', '<leader>co', [[:lua require('neotest').output_panel.close()<CR>]], { desc = '[C]lose [O]utput panel' })
 vim.keymap.set('n', '<leader>td', [[:lua require('dap-go').debug_test()<CR>]], { desc = '[T]est [D]ebug' })
 
 -- Git
