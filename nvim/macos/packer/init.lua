@@ -242,6 +242,22 @@ require('packer').startup(function(use)
   use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
   use 'norcalli/nvim-colorizer.lua' -- Hex colorizer
 
+  -- Github Copilot
+  use 'github/copilot.vim'
+  use {
+    'CopilotC-Nvim/CopilotChat.nvim',
+    requires = { 'github/copilot.vim', 'nvim-lua/plenary.nvim'},
+    config = function()
+      require('CopilotChat').setup()
+    end
+  }
+
+  -- Markdown Preview
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  })
+
   -- Fuzzy Finder (files, lsp, etc)
   use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
 
