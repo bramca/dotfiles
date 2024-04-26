@@ -56,6 +56,23 @@ require('packer').startup(function(use)
   -- Table mode
   use 'dhruvasagar/vim-table-mode'
 
+  -- Homescreen Dashboard
+  use {
+    'nvimdev/dashboard-nvim',
+    event = 'VimEnter',
+    config = function()
+      require('dashboard').setup {
+        -- config
+        config = {
+          week_header = {
+            enable = true,
+          },
+        },
+      }
+    end,
+    requires = {'nvim-tree/nvim-web-devicons'}
+  }
+
   -- CSV
   use {
     'cameron-wags/rainbow_csv.nvim',
@@ -224,7 +241,7 @@ require('packer').startup(function(use)
   -- Autopair
   use {
     "windwp/nvim-autopairs",
-    config = function() 
+    config = function()
       require("nvim-autopairs").setup()
     end
   }
@@ -678,24 +695,6 @@ cmp.setup {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-    ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
   },
   sources = {
     { name = 'nvim_lsp' },
