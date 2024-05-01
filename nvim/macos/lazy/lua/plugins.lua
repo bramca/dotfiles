@@ -364,7 +364,11 @@ return {
     'tpope/vim-rhubarb'
   },
   { -- Git
-    'lewis6991/gitsigns.nvim'
+    'lewis6991/gitsigns.nvim',
+    lazy = false,
+    config = function()
+      require('gitsigns').setup()
+    end,
   },
   { -- Git
     'idanarye/vim-merginal'
@@ -399,7 +403,11 @@ return {
     lazy = false,
   },
   { -- 'gc' to comment visual regions/lines
-    'numToStr/Comment.nvim'
+    'numToStr/Comment.nvim',
+    lazy = false,
+    config = function()
+      require('Comment').setup()
+    end,
   },
   { -- Detect tabstop and shiftwidth automatically
     'tpope/vim-sleuth'
