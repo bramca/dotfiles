@@ -415,16 +415,6 @@ return {
   { -- Hex colorizer
     'norcalli/nvim-colorizer.lua'
   },
-  { -- Github Copilot
-    'github/copilot.vim',
-  },
-  { -- Github Copilot Chat
-    'CopilotC-Nvim/CopilotChat.nvim',
-    dependencies = { 'github/copilot.vim', 'nvim-lua/plenary.nvim' },
-    config = function()
-      require('CopilotChat').setup()
-    end,
-  },
   { -- Markdown Preview
     'iamcco/markdown-preview.nvim',
     build = function() vim.fn['mkdp#util#install']() end,
