@@ -231,6 +231,9 @@ return {
       'rfc_semicolon'
     },
   },
+  { -- Icon Picker
+    'nvim-telescope/telescope-symbols.nvim'
+  },
   { -- REST Client
     'rest-nvim/rest.nvim',
     commit = '45b52200b4a7712a68579d9d13945427e2764725',
