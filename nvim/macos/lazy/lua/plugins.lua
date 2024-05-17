@@ -291,13 +291,19 @@ return {
   },
   { -- DAP Golang
     'leoluz/nvim-dap-go',
+    lazy = false,
     config = function()
       require('dap-go').setup()
-    end,
+    end
   },
   { -- DAP UI
     'rcarriga/nvim-dap-ui',
+    lazy = false,
     dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' },
+    config = function()
+      local dapui = require("dapui")
+      dapui.setup()
+    end,
   },
   { -- Nvim tree
     'nvim-tree/nvim-tree.lua',
