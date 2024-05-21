@@ -6,6 +6,26 @@ return {
       require('mason').setup()
     end,
   },
+  { -- Fuzzy Finder (files, lsp, etc)
+    'nvim-telescope/telescope.nvim',
+    lazy = false,
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = {
+      defaults = {
+        mappings = {
+          i = {
+            ['<C-u>'] = false,
+            ['<C-d>'] = false,
+          },
+        },
+      },
+    }
+  },
+  { -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'make',
+    cond = vim.fn.executable 'make' == 1
+  },
   { -- LSP configuration
     'neovim/nvim-lspconfig',
     lazy = false,
@@ -409,6 +429,7 @@ return {
   },
   { -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
+    lazy = false,
     main = 'ibl',
     config = function()
       require('ibl').setup {
@@ -435,26 +456,6 @@ return {
   { -- Markdown Preview
     'iamcco/markdown-preview.nvim',
     build = function() vim.fn['mkdp#util#install']() end,
-  },
-  { -- Fuzzy Finder (files, lsp, etc)
-    'nvim-telescope/telescope.nvim',
-    lazy = false,
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    opts = {
-      defaults = {
-        mappings = {
-          i = {
-            ['<C-u>'] = false,
-            ['<C-d>'] = false,
-          },
-        },
-      },
-    }
-  },
-  { -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
-    'nvim-telescope/telescope-fzf-native.nvim',
-    build = 'make',
-    cond = vim.fn.executable 'make' == 1
   },
   { -- Homsecreen Dashboard
     'nvimdev/dashboard-nvim',
