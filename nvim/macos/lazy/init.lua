@@ -91,6 +91,9 @@ vim.keymap.set("n", "<C-c><C-c>", [[<Plug>RestNvim<CR>]], { noremap=true })
 -- Nvim Tree
 vim.keymap.set("n", "<leader>to", [[:NvimTreeToggle<CR>]], { desc = "[T]ree [O]pen" })
 
+-- Icon Picker
+vim.keymap.set("n", "<C-i>", [[:Telescope symbols<CR>]], { desc = "[C]heck [I]cons" })
+
 -- Float Terminal
 vim.keymap.set("n", "<leader>ot", [[:FloatermToggle<CR>]], { desc = "[O]pen [T]erminal" })
 vim.keymap.set("n", "<leader>nt", [[:FloatermNew!<CR>]], { desc = "[N]ew [T]erminal" })
@@ -106,8 +109,9 @@ vim.keymap.set("n", "<leader>tx", [[:split | terminal<CR>]], { desc = "[T]ermina
 vim.keymap.set("n", "<leader>tb", [[:tabnew | terminal<CR>]], { desc = "[T]erminal in new [T]ab" })
 
 -- Testing
+vim.keymap.set('n', '<leader>ts', [[:TestNearest<CR>]], { desc = '[T]estNeare[S]t' })
 vim.keymap.set("n", "<leader>ta", [[:lua require("neotest").run.run(vim.fn.expand("%"))<CR>]], { desc = "[T]est [A]ll in file" })
-vim.keymap.set("n", "<leader>ts", [[:lua require("neotest").run.run()<CR>]], { desc = "[T]est Neare[S]t" })
+vim.keymap.set("n", "<leader>ti", [[:lua require("neotest").run.run()<CR>]], { desc = "[T]est Neare[S]t" })
 vim.keymap.set("n", "<leader>tr", [[:lua require("neotest").run.run({vim.fn.getcwd(), extra_args = {"./..."}})<CR>]], { desc = "[T]est project [R]oot" })
 vim.keymap.set("n", "<leader>os", [[:lua require("neotest").summary.open()<CR>]], { desc = "[O]pen [S]ummary" })
 vim.keymap.set("n", "<leader>cs", [[:lua require("neotest").summary.close()<CR>]], { desc = "[C]lose [S]ummary" })

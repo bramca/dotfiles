@@ -352,6 +352,12 @@ return {
       }
     }
   },
+  {
+    'klen/nvim-test',
+    config = function()
+      require('nvim-test').setup()
+    end,
+  },
   { -- Test wrapper
     'nvim-neotest/neotest',
     dependencies = { 'nvim-neotest/neotest-go' },
