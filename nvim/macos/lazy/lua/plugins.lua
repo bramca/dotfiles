@@ -435,12 +435,11 @@ return {
   },
   { -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
-    lazy = false,
     main = 'ibl',
+    version = "3.5.4",
     config = function()
       require('ibl').setup {
         exclude = {
-          buftypes = { 'NvimTree' },
           filetypes = { 'dashboard' },
         }
       }
