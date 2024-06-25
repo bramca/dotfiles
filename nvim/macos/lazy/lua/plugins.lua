@@ -157,8 +157,8 @@ return {
     config = function()
       require('nvim-treesitter.configs').setup {
         -- Add languages to be installed here that you want installed for treesitter
-        ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'vim', 'http', 'javascript', 'astro' },
-        ignore_install = { 'help' },
+        -- ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'vim', 'http', 'javascript', 'astro' },
+        -- ignore_install = { 'help' },
 
         highlight = { enable = true },
         indent = { enable = true, disable = { 'python' } },
@@ -218,7 +218,7 @@ return {
       }
     end,
     build = function()
-      pcall(require('nvim-treesitter.install').update { with_sync = true })
+      pcall(require('nvim-treesitter.install').update { with_sync = false })
     end,
   },
   { -- Additional text objects via treesitter
@@ -414,12 +414,15 @@ return {
   { -- Kanagawa Theme
     'rebelot/kanagawa.nvim'
   },
+  { -- Everforest Theme
+    'sainnhe/everforest'
+  },
   { -- Fancier statusline
     'nvim-lualine/lualine.nvim',
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'kanagawa',
+        theme = 'everforest',
         component_separators = '|',
         section_separators = '',
       },
