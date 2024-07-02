@@ -417,12 +417,20 @@ return {
   { -- Everforest Theme
     'sainnhe/everforest'
   },
+  { -- OneDark Theme
+    'navarasu/onedark.nvim',
+    config = function ()
+      require('onedark').setup {
+        style = 'deep'
+      }
+    end,
+  },
   { -- Fancier statusline
     'nvim-lualine/lualine.nvim',
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'everforest',
+        theme = 'onedark',
         component_separators = '|',
         section_separators = '',
       },
