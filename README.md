@@ -1,7 +1,7 @@
 # Editor Configs
 This repo contains configuration files for multiple text editors on multiple OS'es.
 
-# Folder structure
+# Folder Structure
 The folders are divided per text editor, underneath the editor folder are subfolders per OS.<br>
 
 example
@@ -29,3 +29,10 @@ example
         ├── keybindings.json
         └── settings.json
 ```
+
+# Useful External Tools
+These are some external command line tools that can be useful to integrate in the editor.
+
+- [btop](https://github.com/aristocratos/btop): checking processes in the terminal (better version of `top`)
+- [lazygit](https://github.com/jesseduffield/lazygit): terminal ui for git doing git commands
+- [yazi](https://github.com/sxyazi/yazi): terminal file manager
