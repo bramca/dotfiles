@@ -451,7 +451,7 @@ return {
         style = 'deep',
         -- toggle theme style ---
         toggle_style_key = '<leader>cb', -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
-        toggle_style_list = {'deep', 'light'}, -- List of styles to toggle between
+        toggle_style_list = {'light', 'deep'}, -- List of styles to toggle between
       }
     end,
   },
