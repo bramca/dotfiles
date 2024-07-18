@@ -36,3 +36,4 @@ These are some external command line tools that can be useful to integrate in th
 - [btop](https://github.com/aristocratos/btop): checking processes in the terminal (better version of `top`)
 - [lazygit](https://github.com/jesseduffield/lazygit): terminal ui for git doing git commands
 - [yazi](https://github.com/sxyazi/yazi): terminal file manager
+- [tmux](https://github.com/tmux/tmux/wiki): terminal multiplexer
