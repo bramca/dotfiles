@@ -37,3 +37,4 @@ These are some external command line tools that can be useful to integrate in th
 - [lazygit](https://github.com/jesseduffield/lazygit): terminal ui for git doing git commands
 - [yazi](https://github.com/sxyazi/yazi): terminal file manager
 - [tmux](https://github.com/tmux/tmux/wiki): terminal multiplexer
+- [tmux-mem-cpu-load](https://github.com/thewtex/tmux-mem-cpu-load): see memory and cpu load in tmux status bar
