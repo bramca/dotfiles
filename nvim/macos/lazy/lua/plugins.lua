@@ -441,6 +441,21 @@ return {
   { -- Kanagawa Theme
     'rebelot/kanagawa.nvim'
   },
+  { -- Nightfox Theme
+    'EdenEast/nightfox.nvim',
+    config = function ()
+      require('nightfox').setup({
+        options = {
+          dim_inactive = true,
+          styles = {
+            comments = "italic",
+            keywords = "bold",
+            types = "italic,bold",
+          }
+        }
+      })
+    end,
+  },
   { -- Everforest Theme
     'sainnhe/everforest'
   },
@@ -460,7 +475,7 @@ return {
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'onedark',
+        theme = 'auto',
         component_separators = '|',
         section_separators = '',
       },
