@@ -82,6 +82,16 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
 })
 
+-- [[ Remove trailing whitespace on save ]]
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = {"*"},
+  callback = function()
+    save_cursor = vim.fn.getpos(".")
+    vim.cmd([[%s/\s\+$//e]])
+    vim.fn.setpos(".", save_cursor)
+  end,
+})
+
 -- Keymaps
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap=true })
 
