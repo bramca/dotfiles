@@ -6,10 +6,55 @@ return {
       require('mason').setup()
     end,
   },
+  { -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'make',
+    cond = vim.fn.executable 'make' == 1
+  },
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
     lazy = false,
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope-fzf-native.nvim',
+    },
+    keys = {
+        { '<leader>/',  '<cmd>Telescope current_buffer_fuzzy_find<cr>', desc = 'Buffer search', },
+        { '<leader>fb', '<cmd>Telescope buffers<cr>',                   desc = 'Buffers', },
+        { '<leader>fc', '<cmd>Telescope git_commits<cr>',               desc = 'Commits', },
+        { '<leader>ff', '<cmd>Telescope find_files<cr>',                desc = 'Find All Files', },
+        { '<C-p>',      '<cmd>Telescope git_files<cr>',                 desc = 'Git files', },
+        { '<leader>fh', '<cmd>Telescope help_tags<cr>',                 desc = 'Help', },
+        { '<leader>fj', '<cmd>Telescope command_history<cr>',           desc = 'History', },
+        { '<leader>fk', '<cmd>Telescope keymaps<cr>',                   desc = 'Keymaps', },
+        { '<leader>fl', '<cmd>Telescope lsp_references<cr>',            desc = 'Lsp References', },
+        { '<leader>fo', '<cmd>Telescope oldfiles<cr>',                  desc = 'Old files', },
+        { '<leader>fr', '<cmd>Telescope live_grep<cr>',                 desc = 'Ripgrep', },
+        { '<leader>fs', '<cmd>Telescope grep_string<cr>',               desc = 'Grep String', },
+        { '<leader>ft', '<cmd>Telescope treesitter<cr>',                desc = 'Treesitter', },
+    },
+    config = function()
+      local telescope = require("telescope")
+      telescope.setup({
+        pickers = {
+          live_grep = {
+            file_ignore_patterns = { 'node_modules', '.git', '.venv' },
+            additional_args = function(_)
+              return { "--hidden" }
+            end
+          },
+          find_files = {
+            file_ignore_patterns = { 'node_modules', '.git', '.venv' },
+            hidden = true
+          }
+
+        },
+        extensions = {
+          "fzf"
+        },
+      })
+      telescope.load_extension("fzf")
+    end,
     opts = {
       defaults = {
         mappings = {
@@ -20,11 +65,6 @@ return {
         },
       },
     }
-  },
-  { -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
-    'nvim-telescope/telescope-fzf-native.nvim',
-    build = 'make',
-    cond = vim.fn.executable 'make' == 1
   },
   { -- LSP configuration
     'neovim/nvim-lspconfig',
@@ -93,9 +133,9 @@ return {
       --  the `settings` field of the server config. You must look up that documentation yourself.
       local servers = {
         -- clangd = {},
-        -- gopls = {},
-        -- pyright = {},
-        -- rust_analyzer = {},
+        gopls = {},
+        pyright = {},
+        rust_analyzer = {},
         -- tsserver = {},
         lua_ls = {
           Lua = {
@@ -157,8 +197,8 @@ return {
     config = function()
       require('nvim-treesitter.configs').setup {
         -- Add languages to be installed here that you want installed for treesitter
-        -- ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'vim', 'http', 'javascript', 'astro' },
-        -- ignore_install = { 'help' },
+        ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'vim', 'http', 'javascript', 'astro' },
+        ignore_install = { 'help' },
 
         highlight = { enable = true },
         indent = { enable = true, disable = { 'python' } },
@@ -218,7 +258,7 @@ return {
       }
     end,
     build = function()
-      pcall(require('nvim-treesitter.install').update { with_sync = false })
+      pcall(require('nvim-treesitter.install').update { with_sync = true })
     end,
   },
   { -- Additional text objects via treesitter
@@ -264,7 +304,7 @@ return {
         -- Keep the http file buffer above|left when split horizontal|vertical
         result_split_in_place = false,
         -- Skip SSL verification, useful for unknown certificates
-        skip_ssl_verification = false,
+        skip_ssl_verification = true,
         -- Encode URL before making request
         encode_url = true,
         -- Highlight request on run

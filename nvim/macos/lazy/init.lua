@@ -146,37 +146,12 @@ vim.keymap.set("n", "<leader>dt", require "dap".terminate)
 vim.keymap.set("n", "<leader>fv", [[:lua require("dapui").float_element("scopes")<CR>:lua require("dapui").float_element("scopes")<CR>]], { desc = "[F]loating [V]ariables window"})
 
 -- See `:help telescope.builtin`
-vim.keymap.set("n", "<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
-vim.keymap.set("n", "<leader><space>", require("telescope.builtin").buffers, { desc = "[ ] Find existing buffers" })
-vim.keymap.set("n", "<leader>/", function()
-  -- You can pass additional configuration to telescope to change theme, layout, etc.
-  require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown {
-    winblend = 10,
-    previewer = false,
-  })
-end, { desc = "[/] Fuzzily search in current buffer]" })
-
-vim.keymap.set("n", "<leader>sf", require("telescope.builtin").find_files, { desc = "[S]earch [F]iles" })
-vim.keymap.set("n", "<leader>fs", function()
-  require("telescope.builtin").find_files({ no_ignore=true })
-end, { desc = "[F]ile [S]earch no ignore" })
 vim.keymap.set("n", "<leader>fd", function()
   require("telescope.builtin").find_files({ cwd = "~/dev" })
 end, { desc = "Search [F]iles in [D]evelop" })
 vim.keymap.set("n", "<leader>fn", function()
   require("telescope.builtin").find_files({ cwd = "~/notes" })
 end, { desc = "Search [F]iles in [N]otes" })
-vim.keymap.set("n", "<leader>fh", function()
-  require("telescope.builtin").find_files({ cwd = "~", file_ignore_patterns = { "venv", "node_modules", "lib", "vrealize-build" } })
-end, { desc = "Search [F]iles in [H]ome directory" })
-vim.keymap.set("n", "<leader>sc", function()
-  require("telescope.builtin").find_files({ cwd = require("telescope.utils").buffer_dir(), no_ignore=true })
-end, { desc = "Search [F]iles in [C]urrent buffer directory" })
-vim.keymap.set("n", "<leader>sw", require("telescope.builtin").grep_string, { desc = "[S]earch current [W]ord" })
-vim.keymap.set("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
-vim.keymap.set("n", "<leader>gh", function()
-  require("telescope.builtin").live_grep({ cwd = require("telescope.utils").buffer_dir() })
-end, { desc = "Search by [G]rep [H]ere"})
 vim.keymap.set("n", "<leader>gd", function()
   require("telescope.builtin").live_grep({ cwd = "~/dev" })
 end, { desc = "Search by [G]rep in [D]evelop"})
