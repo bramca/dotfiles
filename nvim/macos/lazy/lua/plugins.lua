@@ -497,7 +497,11 @@ return {
     end,
   },
   { -- Everforest Theme
-    'sainnhe/everforest'
+    'sainnhe/everforest',
+    config = function()
+      vim.g.everforest_dim_inactive_windows = '1'
+      vim.g.everforest_enable_italic = '1'
+    end,
   },
   { -- OneDark Theme
     'navarasu/onedark.nvim',
