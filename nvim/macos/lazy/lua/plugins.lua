@@ -475,12 +475,6 @@ return {
   { -- Git
     'idanarye/vim-merginal'
   },
-  { -- Catppuccin Theme
-    'catppuccin/nvim'
-  },
-  { -- Kanagawa Theme
-    'rebelot/kanagawa.nvim'
-  },
   { -- Nightfox Theme
     'EdenEast/nightfox.nvim',
     config = function ()
