@@ -14,7 +14,11 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappings are correct
 vim.g.maplocalleader = " " -- Same for `maplocalleader`
 
-require("lazy").setup("plugins")
+require("lazy").setup("plugins", {
+  checker = {
+    enabled = true,
+  }
+})
 
 vim.fn.sign_define("DapBreakpoint",{ text = "🔴", texthl = "", linehl = "", numhl = ""})
 vim.fn.sign_define("DapStopped",{ text = "⏩", texthl = "", linehl = "", numhl = ""})
@@ -22,8 +26,12 @@ vim.fn.sign_define("DapStopped",{ text = "⏩", texthl = "", linehl = "", numhl 
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+-- Split windows
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
 -- Set highlight on search
-vim.o.hlsearch = false
+vim.o.hlsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
@@ -94,12 +102,14 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 
 -- Keymaps
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap=true })
+vim.keymap.set("n", "<leader>nh", [[:nohl<CR>]], { desc = "[N]o [H]ighlight" })
 
 -- REST Client
 vim.keymap.set("n", "<C-c><C-c>", [[<Plug>RestNvim<CR>]], { noremap=true })
 
 -- Nvim Tree
 vim.keymap.set("n", "<leader>to", [[:NvimTreeToggle<CR>]], { desc = "[T]ree [O]pen" })
+vim.keymap.set("n", "<leader>tf", [[:NvimTreeFindFileToggle<CR>]], { desc = "[T]ree [F]ind file" })
 
 -- Icon Picker
 vim.keymap.set("n", "<C-i>", [[:Telescope symbols<CR>]], { desc = "[C]heck [I]cons" })
@@ -108,7 +118,6 @@ vim.keymap.set("n", "<C-i>", [[:Telescope symbols<CR>]], { desc = "[C]heck [I]co
 vim.keymap.set("n", "<leader>ot", [[:FloatermToggle<CR>]], { desc = "[O]pen [T]erminal" })
 vim.keymap.set("n", "<leader>nt", [[:FloatermNew!<CR>]], { desc = "[N]ew [T]erminal" })
 vim.keymap.set("n", "<leader>th", [[:FloatermNew! cd %:p:h<CR>]], { desc = "New [T]erminal [H]ere" })
-vim.keymap.set("n", "<leader>tf", [[:FloatermFirst<CR>]], { desc  = "[T]erminal [F]irst" })
 vim.keymap.set("n", "<leader>tn", [[:FloatermNext<CR>]], { desc = "[T]erminal [N]ext" })
 vim.keymap.set("n", "<leader>gu", [[:FloatermNew lazygit<CR>]], { desc = "[G]it [U]i" })
 vim.keymap.set("n", "<leader>tp", [[:FloatermNew btop<CR>]], { desc = "[T]erminal [P]rocesses" })

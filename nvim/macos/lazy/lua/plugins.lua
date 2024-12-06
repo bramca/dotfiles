@@ -6,6 +6,9 @@ return {
       require('mason').setup()
     end,
   },
+  { -- Plenary used by other plugins
+    'nvim-lua/plenary.nvim',
+  },
   { -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
     'nvim-telescope/telescope-fzf-native.nvim',
     build = 'make',
@@ -65,6 +68,15 @@ return {
         },
       },
     }
+  },
+  { -- Keymap info
+    'folke/which-key.nvim',
+    event = 'VeryLazy',
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 500
+    end,
+    opts = {},
   },
   { -- LSP configuration
     'neovim/nvim-lspconfig',
@@ -490,12 +502,16 @@ return {
       })
     end,
   },
-  { -- Everforest Theme
-    'sainnhe/everforest',
-    config = function()
-      vim.g.everforest_dim_inactive_windows = '1'
-      vim.g.everforest_enable_italic = '1'
-    end,
+  { -- Fancier tabs
+    'akinsho/bufferline.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    version = '*',
+    opts = {
+      options = {
+        mode = 'tabs',
+        separator_style = 'slant',
+      }
+    }
   },
   { -- Fancier statusline
     'nvim-lualine/lualine.nvim',
@@ -503,17 +519,25 @@ return {
       options = {
         icons_enabled = true,
         theme = 'auto',
-        component_separators = '|',
-        section_separators = '',
       },
       sections = {
         lualine_a = {'mode'},
         lualine_b = {'branch', 'diff', 'diagnostics'},
         lualine_c = {{'filename', path=1}},
-        lualine_x = {'encoding', 'fileformat', 'filetype', 'ctime'},
+        lualine_x = {
+          {
+            require('lazy.status').updates,
+            cond = require('lazy.status').has_updates,
+            color = { fg = '#ff9e64' },
+          },
+          {'encoding'},
+          {'fileformat'},
+          {'filetype'},
+          {'ctime'}
+        },
         lualine_y = {'progress'},
         lualine_z = {'location'}
-      }
+      },
     },
   },
   { -- Add indentation guides even on blank lines
