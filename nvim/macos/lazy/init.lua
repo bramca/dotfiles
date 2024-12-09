@@ -17,6 +17,7 @@ vim.g.maplocalleader = " " -- Same for `maplocalleader`
 require("lazy").setup("plugins", {
   checker = {
     enabled = true,
+    notify = false,
   }
 })
 
