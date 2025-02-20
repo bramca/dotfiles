@@ -1,6 +1,7 @@
 return {
   {
     'williamboman/mason.nvim',
+    commit = 'e2f7f9044ec30067bc11800a9e266664b88cda22',
     lazy = false,
     init = function()
       require('mason').setup()
@@ -534,6 +535,17 @@ return {
             keywords = "bold",
             types = "italic,bold",
           }
+        }
+      })
+    end,
+  },
+  { -- Github Theme
+    'projekt0n/github-nvim-theme',
+    name = 'github-theme',
+    config = function()
+      require('github-theme').setup({
+        options = {
+          dim_inactive = true,
         }
       })
     end,
