@@ -1,3 +1,4 @@
+-- TODO: fix require statements in init.lua and lua/plugins.lua and fix colorscheme setting in this file
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({
