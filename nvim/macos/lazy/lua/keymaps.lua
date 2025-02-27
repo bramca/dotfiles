@@ -109,7 +109,6 @@ vim.keymap.set("n", "<leader>cw", function()
 end, { desc = "Open the file manager in nvim's working directory" })
 
 -- LSP
-
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "[R]e[n]ame" })
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "[C]ode [A]ction" })
 
