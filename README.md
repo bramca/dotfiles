@@ -38,3 +38,4 @@ These are some external command line tools that can be useful to integrate in th
 - [yazi](https://github.com/sxyazi/yazi): terminal file manager
 - [tmux](https://github.com/tmux/tmux/wiki): terminal multiplexer
 - [tmux-mem-cpu-load](https://github.com/thewtex/tmux-mem-cpu-load): see memory and cpu load in tmux status bar
+- [powerlevel10k](https://github.com/romkatv/powerlevel10k): nice terminal theme
