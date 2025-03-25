@@ -33,6 +33,8 @@ example
 # Useful External Tools
 These are some external command line tools that can be useful to integrate in the editor.
 
+- [ripgrep](https://github.com/BurntSushi/ripgrep): faster grep
+- [fd](https://github.com/sharkdp/fd): faster file search
 - [btop](https://github.com/aristocratos/btop): checking processes in the terminal (better version of `top`)
 - [lazygit](https://github.com/jesseduffield/lazygit): terminal ui for git doing git commands
 - [yazi](https://github.com/sxyazi/yazi): terminal file manager
