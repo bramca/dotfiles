@@ -2,30 +2,45 @@
 This repo contains configuration files for multiple text editors on multiple OS'es.
 
 # Folder Structure
-The folders are divided per text editor, underneath the editor folder are subfolders per OS.<br>
+The folders are divided per text editor.<br>
 
 example
 ``` text
-├── doom_emacs
-│   ├── macos
-│   │   └── .doom.d
-│   │       ├── config.el
-│   │       ├── custom.el
-│   │       ├── init.el
-│   │       └── packages.el
+.
+├── README.md
+├── doom
+│   ├── config.el
+│   ├── custom.el
+│   ├── init.el
+│   └── packages.el
+├── emacs
+├── nvim
+│   ├── lazy
+│   │   ├── data
+│   │   │   └── telescope-sources
+│   │   │       └── my_symbols.json
+│   │   ├── init.lua
+│   │   └── lua
+│   │       ├── keymaps.lua
+│   │       ├── launch.lua
+│   │       ├── opts.lua
+│   │       └── plugins
+│   │           ├── autopairs.lua
+│   │           ├── bufferline.lua
+│   │           ├── colorizer.lua
+│   │           ├── colorscheme.lua
+│   │           └── yazi.lua
+│   └── packer
+│       └── init.lua
+├── spacemacs
 │   └── windows
-│       └── .doom.d
-│           ├── config.el
-│           ├── custom.el
-│           ├── init.el
-│           └── packages.el
+├── tmux
 ├── vim
-│   └── linux
-│       ├── .tmux.conf
-│       └── .vimrc
-│
 └── vscode
-    └── macos
+    ├── macos
+    │   ├── keybindings.json
+    │   └── settings.json
+    └── windows
         ├── keybindings.json
         └── settings.json
 ```
