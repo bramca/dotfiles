@@ -85,3 +85,5 @@
         (vterm-mode)))
     (switch-to-buffer buffer)))
 (global-set-key (kbd "C-c t") 'my-vterm-custom-buffer-name)
+
+(require 'dap-dlv-go)
