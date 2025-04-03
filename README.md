@@ -57,3 +57,4 @@ These are some external command line tools that can be useful to integrate in th
 - [tmux-mem-cpu-load](https://github.com/thewtex/tmux-mem-cpu-load): see memory and cpu load in tmux status bar
 - [powerlevel10k](https://github.com/romkatv/powerlevel10k): nice terminal theme
 - [lazydocker](https://github.com/jesseduffield/lazydocker): terminal docker container management
+- [lazysql](https://github.com/jorgerojas26/lazysql): terminal database management
