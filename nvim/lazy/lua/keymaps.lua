@@ -25,8 +25,10 @@ vim.keymap.set("n", "<leader>ot", [[:FloatermToggle<CR>]], { desc = "[O]pen [T]e
 vim.keymap.set("n", "<leader>nt", [[:FloatermNew! --height=0.8 --width=0.8<CR>]], { desc = "[N]ew [T]erminal" })
 vim.keymap.set("n", "<leader>th", [[:FloatermNew! --height=0.8 --width=0.8 cd %:p:h<CR>]], { desc = "New [T]erminal [H]ere" })
 vim.keymap.set("n", "<leader>tn", [[:FloatermNext<CR>]], { desc = "[T]erminal [N]ext" })
-vim.keymap.set("n", "<leader>gu", [[:FloatermNew --height=0.8 --width=0.8 lazygit<CR>]], { desc = "[G]it [U]i" })
 vim.keymap.set("n", "<leader>tp", [[:FloatermNew --height=0.8 --width=0.8 btop<CR>]], { desc = "[T]erminal [P]rocesses" })
+vim.keymap.set("n", "<leader>lg", [[:FloatermNew --height=0.8 --width=0.8 lazygit<CR>]], { desc = "[L]azy [G]it" })
+vim.keymap.set("n", "<leader>ld", [[:FloatermNew --height=0.8 --width=0.8 lazydocker<CR>]], { desc = "[L]azy [D]ocker" })
+vim.keymap.set("n", "<leader>ls", [[:FloatermNew --height=0.8 --width=0.8 lazysql<CR>]], { desc = "[L]azy [S]QL" })
 
 -- Terminal
 vim.keymap.set("n", "<leader>tv", [[:vsplit | terminal<CR>]], { desc = "[T]erminal in [V]ertical split" })
