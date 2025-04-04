@@ -1,7 +1,7 @@
 -- Test wrapper
 local M = {
     'nvim-neotest/neotest',
-    dependencies = { 'nvim-neotest/neotest-go' },
+    dependencies = { 'fredrikaverpil/neotest-golang', version = '*' },
   }
 
 
@@ -20,9 +20,7 @@ function M.config()
   require('neotest').setup({
     -- your neotest config here
     adapters = {
-      require('neotest-go')({
-        recursive_run = true
-      }),
+      require('neotest-golang'),
     },
   })
 end
