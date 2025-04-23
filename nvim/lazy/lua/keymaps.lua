@@ -18,7 +18,7 @@ vim.keymap.set("n", "<leader>to", [[:NvimTreeToggle<CR>]], { desc = "[T]ree [O]p
 vim.keymap.set("n", "<leader>tf", [[:NvimTreeFindFileToggle<CR>]], { desc = "[T]ree [F]ind file" })
 
 -- Icon Picker
-vim.keymap.set("n", "<C-i>", [[:Telescope symbols<CR>]], { desc = "[C]heck [I]cons" })
+vim.keymap.set("n", "<C-s>", [[:Telescope symbols<CR>]], { desc = "[C]heck [S]ymbols" })
 
 -- Float Terminal
 vim.keymap.set("n", "<leader>ot", [[:FloatermToggle<CR>]], { desc = "[O]pen [T]erminal" })
