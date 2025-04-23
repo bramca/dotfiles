@@ -150,3 +150,6 @@ end, { desc = "Next todo comment" })
 vim.keymap.set("n", "[t", function()
 	require("todo-comments").jump_prev()
 end, { desc = "Previous todo comment" })
+
+-- URL-Open
+vim.keymap.set("n", "<leader>ou", [[:URLOpenUnderCursor<CR>]], { desc = "[O]pen [U]RL under cursor" })
