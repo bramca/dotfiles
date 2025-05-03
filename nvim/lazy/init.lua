@@ -41,6 +41,7 @@ spec("plugins.vim-table-mode")
 spec("plugins.which-key")
 spec("plugins.yazi")
 spec("plugins.url-open")
+spec("plugins.harpoon")
 
 require "plugins.lazy"
 require "keymaps"

@@ -18,7 +18,7 @@ vim.keymap.set("n", "<leader>to", [[:NvimTreeToggle<CR>]], { desc = "[T]ree [O]p
 vim.keymap.set("n", "<leader>tf", [[:NvimTreeFindFileToggle<CR>]], { desc = "[T]ree [F]ind file" })
 
 -- Icon Picker
-vim.keymap.set("n", "<C-s>", [[:Telescope symbols<CR>]], { desc = "[C]heck [S]ymbols" })
+vim.keymap.set("n", "<leader>is", [[:Telescope symbols<CR>]], { desc = "[I]nsert [S]ymbols" })
 
 -- Float Terminal
 vim.keymap.set("n", "<leader>ot", [[:FloatermToggle<CR>]], { desc = "[O]pen [T]erminal" })
@@ -51,13 +51,25 @@ vim.keymap.set("n", "<leader>gg", [[:Git<CR>]], { desc = "[G]it status" })
 
 -- Buffer switch
 vim.keymap.set("n", "<leader>bl", [[:b#<CR>]], { desc = "Previous [B]uffer" })
+vim.keymap.set("n", "<leader>bh", [[:bn<CR>]], { desc = "Next [B]uffer" })
+
+vim.keymap.set("n", "<leader>ha", function() require("harpoon"):list():add() end, { desc = "[H]arpoon [A]dd file" })
+vim.keymap.set("n", "<C-e>", function() require("harpoon").ui:toggle_quick_menu(require("harpoon"):list()) end, { desc = "Harpoon Quick Menu" })
+
+vim.keymap.set("n", "<C-a>", function() require("harpoon"):list():select(1) end, { desc = "Harpoon file 1" })
+vim.keymap.set("n", "<C-s>", function() require("harpoon"):list():select(2) end, { desc = "Harpoon file 2" })
+vim.keymap.set("n", "<C-d>", function() require("harpoon"):list():select(3) end, { desc = "Harpoon file 3" })
+vim.keymap.set("n", "<C-f>", function() require("harpoon"):list():select(4) end, { desc = "Harpoon file 4" })
+
+vim.keymap.set("n", "<leader>hp", function() require("harpoon"):list():prev() end, { desc = "[H]arpoon [P]revious buffer" })
+vim.keymap.set("n", "<leader>hn", function() require("harpoon"):list():next() end, { desc = "[H]arpoon [N]ext buffer" })
 
 -- DAP (Debug Adapter Protocol)
 vim.keymap.set("n", "<leader>dc", require "dap".continue, { desc = 'dap continue' })
 vim.keymap.set("n", "<leader>do", require "dap".step_over, { desc = 'dap step over' })
 vim.keymap.set("n", "<leader>di", require "dap".step_into, { desc = 'dap step into' })
 vim.keymap.set("n", "<leader>dx", require "dap".step_out, { desc = 'dap step out' })
-vim.keymap.set("n", "<leader>b", require "dap".toggle_breakpoint, { desc = 'dap breakpoint' })
+vim.keymap.set("n", "<leader>ba", require "dap".toggle_breakpoint, { desc = 'dap breakpoint' })
 vim.keymap.set("n", "<leader>cab", require "dap".clear_breakpoints, { desc = 'dap claer breakpoints' })
 vim.keymap.set("n", "<leader>dt", require "dap".terminate, { desc = 'dap terminate' })
 vim.keymap.set("n", "<leader>fv", [[:lua require("dapui").float_element("scopes")<CR>:lua require("dapui").float_element("scopes")<CR>]], { desc = "[F]loating [V]ariables window"})
