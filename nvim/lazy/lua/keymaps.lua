@@ -49,9 +49,9 @@ vim.keymap.set("n", "<leader>ha", function() require("harpoon"):list():add() end
 vim.keymap.set("n", "<C-e>", function() require("harpoon").ui:toggle_quick_menu(require("harpoon"):list()) end, { desc = "Harpoon Quick Menu" })
 
 vim.keymap.set("n", "<C-a>", function() require("harpoon"):list():select(1) end, { desc = "Harpoon file 1" })
-vim.keymap.set("n", "<C-s>", function() require("harpoon"):list():select(2) end, { desc = "Harpoon file 2" })
-vim.keymap.set("n", "<C-d>", function() require("harpoon"):list():select(3) end, { desc = "Harpoon file 3" })
-vim.keymap.set("n", "<C-f>", function() require("harpoon"):list():select(4) end, { desc = "Harpoon file 4" })
+vim.keymap.set("n", "<C-d>", function() require("harpoon"):list():select(2) end, { desc = "Harpoon file 2" })
+vim.keymap.set("n", "<C-g>", function() require("harpoon"):list():select(3) end, { desc = "Harpoon file 3" })
+vim.keymap.set("n", "<C-j>", function() require("harpoon"):list():select(4) end, { desc = "Harpoon file 4" })
 
 vim.keymap.set("n", "<leader>hp", function() require("harpoon"):list():prev() end, { desc = "Harpoon Previous buffer" })
 vim.keymap.set("n", "<leader>hn", function() require("harpoon"):list():next() end, { desc = "Harpoon Next buffer" })
