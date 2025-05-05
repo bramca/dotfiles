@@ -6,7 +6,17 @@
 -- * override the configuration of LazyVim plugins
 return {
   -- add github-theme
-  { "projekt0n/github-nvim-theme" },
+  {
+    "projekt0n/github-nvim-theme",
+    name = "github-theme",
+    config = function()
+      require("github-theme").setup({
+        options = {
+          dim_inactive = true,
+        },
+      })
+    end,
+  },
 
   -- Configure LazyVim to load github-theme
   {
@@ -76,7 +86,7 @@ return {
   {
     "klen/nvim-test",
     config = function()
-      require("nvim-test").setup()
+      require("nvim-test").setup({})
     end,
   },
 
@@ -144,6 +154,11 @@ return {
   -- Vim table mode
   {
     "dhruvasagar/vim-table-mode",
+  },
+
+  -- Colorizer
+  {
+    "norcalli/nvim-colorizer.lua",
   },
 
   -- add pyright to lspconfig
