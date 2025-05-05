@@ -39,7 +39,7 @@ vim.keymap.set("n", "<leader>co", [[:lua require("neotest").output_panel.close()
 vim.keymap.set("n", "<leader>td", [[:lua require("dap-go").debug_test()<CR>]], { desc = "Test Debug" })
 
 -- Git
-vim.keymap.set("n", "<leader>gg", function() require("snacks").lazygit() end, { desc = "Lazy Git" })
+vim.keymap.set("n", "<leader>lg", function() require("snacks").lazygit() end, { desc = "Lazy Git" })
 
 -- Buffer switch
 vim.keymap.set("n", "<leader>bl", [[:b#<CR>]], { desc = "Previous Buffer" })
@@ -72,8 +72,8 @@ vim.keymap.set("n", "<leader>ff", require("snacks").picker.files, { desc = "Find
 vim.keymap.set("n", "<leader>fb", require("snacks").picker.buffers, { desc = "Find Buffers" })
 vim.keymap.set("n", "<leader>fg", require("snacks").picker.git_files, { desc = "Find Git Files" })
 vim.keymap.set("n", "<leader>fr", require("snacks").picker.recent, { desc = "Find Recent Files" })
-vim.keymap.set("n", "<leader>fd", function() require("snacks").picker.files({ cwd = "~/dev" }) end, { desc = "Find Files in Dev" })
-vim.keymap.set("n", "<leader>fn", function() require("snacks").picker.files({ cwd = "~/notes" }) end, { desc = "Find Files in Notes" })
+vim.keymap.set("n", "<leader>fP", function() require("snacks").picker.files({ cwd = "~/dev" }) end, { desc = "Find Projects" })
+vim.keymap.set("n", "<leader>fn", function() require("snacks").picker.files({ cwd = "~/notes" }) end, { desc = "Find Notes" })
 vim.keymap.set("n", "<leader>fc", function() require("snacks").picker.files({ cwd = vim.fn.stdpath("config") }) end, { desc = "Find Config File" })
 vim.keymap.set("n", "<leader>f.", function() require("snacks").picker.files({ cwd = vim.fn.expand("%:p:h") }) end, { desc = "Find Files in Buffer Dir" })
 
