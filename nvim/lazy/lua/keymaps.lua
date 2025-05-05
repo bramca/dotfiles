@@ -11,7 +11,7 @@ vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap=true })
 vim.keymap.set("n", "<leader>nh", [[:nohl<CR>]], { desc = "No Highlight" })
 
 -- REST Client
-vim.keymap.set("n", "<C-c><C-c>", [[<Plug>RestNvim<CR>]], { noremap=true })
+vim.keymap.set("n", "<C-c><C-c>", [[:Rest run<CR>]], { noremap=true })
 
 -- Float Terminal
 vim.keymap.set("n", "<leader>ot", [[:FloatermToggle<CR>]], { desc = "Open Terminal" })
@@ -80,7 +80,7 @@ vim.keymap.set("n", "<leader>f.", function() require("snacks").picker.files({ cw
 -- Grep
 vim.keymap.set("n", "<leader>/", require("snacks").picker.lines, { desc = "Search Buffer" })
 vim.keymap.set("n", "<leader>s.", function() require("snacks").picker.grep({ cwd = vim.fn.expand("%:p:h") }) end, { desc = "Search in Buffer Dir" })
-vim.keymap.set("n", "<leader>sd", function() require("snacks").picker.grep({ cwd = "~/dev" }) end, { desc = "Search in Dev"})
+vim.keymap.set("n", "<leader>sP", function() require("snacks").picker.grep({ cwd = "~/dev" }) end, { desc = "Search in Projects"})
 vim.keymap.set("n", "<leader>sc", function() require("snacks").picker.grep({ cwd = vim.fn.stdpath("config") }) end, { desc = "Search in Config Files"})
 vim.keymap.set("n", "<leader>sw", require("snacks").picker.grep_word, { desc = "Search Word" })
 vim.keymap.set("n", "<leader>sn", function() require("snacks").picker.grep({ cwd = "~/notes" }) end, { desc = "Search in Notes"})
