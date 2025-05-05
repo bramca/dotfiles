@@ -97,7 +97,7 @@ vim.keymap.set("n", "<leader>sk", require("snacks").picker.keymaps, { desc = "Se
 vim.keymap.set("n", "<leader>sM", require("snacks").picker.man, { desc = "Search Man Pages" })
 vim.keymap.set("n", "<leader>si", require("snacks").picker.icons, { desc = "Search Icons" })
 vim.keymap.set("n", "<leader>sp", require("snacks").picker.lazy, { desc = "Search Plugins" })
-vim.keymap.set("n", "<leader>su", function() require("snacks").undo() end, { desc = "Search Undo History" })
+vim.keymap.set("n", "<leader>su", function() require("snacks").picker.undo() end, { desc = "Search Undo History" })
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>sd", require("snacks").picker.diagnostics, { desc = "Search Diagnostics" })
