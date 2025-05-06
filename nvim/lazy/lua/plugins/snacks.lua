@@ -7,6 +7,29 @@ local M = {
     bigfile = { enabled = true },
     dashboard = {
       enabled = true,
+      preset = {
+        header = [[
+                               .+-
+                              ++++-
+                        -    -===++:    =-
+                       -++   =====++   =++
+                       +=+= :+=====+: ++=+-
+                  .   ++==+++======+++====-   :.
+                 -+=  ++-:::=======++=====-  -++
+                .+++--+=:::-*%=--=========- ++=+=
+                ++==++++#@@@@-:::=========++===++
+               =+======::::::::    .===========++-
+               ++========.            .========++=
+              =+=======#@            @@@========++
+              ++=====#@@@:  *@@%    %@@@=-:-++==++
+              ++====@@@@@-  @@@@         +@@@@@@*=
+              =+===@@@@@@:                %@@@@#+:
+               +==+@@@@@@          .+          ==
+               .+==@@@@#              .=--::-=++
+                 ====:                 .======-
+                    -                   :===:
+        ]]
+      },
       sections = {
         {
           pane = 2,
@@ -46,7 +69,7 @@ local M = {
               limit = 3
             },
             indent = 4,
-            padding = 1
+            padding = 2
           },
           {
             icon = " ",
@@ -63,16 +86,13 @@ local M = {
         },
         {
           pane = 1,
-          align = "center",
-          random = 10,
-          section = "terminal",
-          cmd = "date +%A | figlet -w 60 -f $HOME/.config/nvim/data/Small.flf -c",
-          height = 5,
-          padding = 3
+          section = "header",
+          align = "left",
+          padding = 2
         },
         {
           section = "startup",
-          padding = 3,
+          padding = 2,
         },
       },
     },
