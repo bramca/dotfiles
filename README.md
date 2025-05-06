@@ -58,3 +58,4 @@ These are some external command line tools that can be useful to integrate in th
 - [powerlevel10k](https://github.com/romkatv/powerlevel10k): nice terminal theme
 - [lazydocker](https://github.com/jesseduffield/lazydocker): terminal docker container management
 - [lazysql](https://github.com/jorgerojas26/lazysql): terminal database management
+- [wezterm](https://wezterm.org/)

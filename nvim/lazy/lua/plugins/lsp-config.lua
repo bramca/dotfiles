@@ -12,6 +12,9 @@ local M = {
 
     -- Additional lua configuration, makes nvim stuff amazing
     'folke/neodev.nvim',
+
+    -- Completion
+    'hrsh7th/cmp-nvim-lsp'
   },
 }
 
