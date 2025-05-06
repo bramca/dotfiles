@@ -66,8 +66,8 @@ local M = {
           align = "center",
           random = 10,
           section = "terminal",
-          cmd = "~/starfetch/starfetch",
-          height = 14,
+          cmd = "date +%A | figlet -w 60 -f $HOME/.config/nvim/data/Small.flf -c",
+          height = 5,
           padding = 3
         },
         {
