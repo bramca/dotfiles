@@ -18,14 +18,17 @@ vim.keymap.set("n", "<leader>ot", [[:FloatermToggle<CR>]], { desc = "Open Termin
 vim.keymap.set("n", "<leader>nt", [[:FloatermNew! --height=0.8 --width=0.8<CR>]], { desc = "New Terminal" })
 vim.keymap.set("n", "<leader>th", [[:FloatermNew! --height=0.8 --width=0.8 cd %:p:h<CR>]], { desc = "New Terminal Here" })
 vim.keymap.set("n", "<leader>tn", [[:FloatermNext<CR>]], { desc = "Terminal Next" })
+vim.keymap.set("n", "<leader>cx", [[:FloatermUpdate --wintype=split --height=0.3<CR>]], { desc = "Change Terminal to Horizontal Split" })
+vim.keymap.set("n", "<leader>cv", [[:FloatermUpdate --wintype=vsplit --width=0.5<CR>]], { desc = "Change Terminal to Vertical Split" })
+vim.keymap.set("n", "<leader>cf", [[:FloatermUpdate --wintype=float --width=0.8 --height=0.8 --position=center<CR>]], { desc = "Change Terminal to Floating" })
 vim.keymap.set("n", "<leader>tp", [[:FloatermNew --height=0.8 --width=0.8 btop<CR>]], { desc = "Terminal Processes" })
 vim.keymap.set("n", "<leader>ld", [[:FloatermNew --height=0.8 --width=0.8 lazydocker<CR>]], { desc = "Lazy Docker" })
 vim.keymap.set("n", "<leader>lq", [[:FloatermNew --height=0.8 --width=0.8 lazysql<CR>]], { desc = "Lazy SQL" })
 
 -- Terminal
-vim.keymap.set("n", "<leader>tv", [[:vsplit | terminal<CR>]], { desc = "Terminal in Vertical split" })
-vim.keymap.set("n", "<leader>tx", [[:split | terminal<CR>]], { desc = "Terminal in horizontal Split" })
-vim.keymap.set("n", "<leader>tb", [[:tabnew | terminal<CR>]], { desc = "Terminal in new Tab" })
+vim.keymap.set("n", "<leader>tv", [[:vsplit | terminal<CR>]], { desc = "Terminal in Vertical Split" })
+vim.keymap.set("n", "<leader>tx", [[:split | terminal<CR>]], { desc = "Terminal in Horizontal Split" })
+vim.keymap.set("n", "<leader>tb", [[:tabnew | terminal<CR>]], { desc = "Terminal in New Tab" })
 
 -- Testing
 vim.keymap.set('n', '<leader>ts', [[:TestNearest<CR>]], { desc = 'Test Nearest' })
