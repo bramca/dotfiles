@@ -24,7 +24,11 @@ config.enable_tab_bar = false
 
 config.window_decorations = "RESIZE"
 
-config.macos_window_background_blur = 10
+-- enable window transparency
+-- config.window_background_opacity = 0.92
+
+-- enable for blurring background when transparency is enabled
+-- config.macos_window_background_blur = 10
 
 config.colors = {
   -- Overrides the cell background color when the current cell is occupied by the

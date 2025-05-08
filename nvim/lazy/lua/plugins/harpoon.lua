@@ -14,7 +14,7 @@ function M.config()
     },
     default = {
       create_list_item = function(config, name)
-        name = vim.loop.cwd() .. "/" .. vim.fn.expand("%")
+        name = vim.fn.expand("%:p")
 
         local bufnr = vim.fn.bufnr(name, false)
 
