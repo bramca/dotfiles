@@ -36,10 +36,10 @@ function M.opts()
       end,
     }),
     sources = cmp.config.sources({
+      { name = "nvim_lsp_signature_help" },
       { name = "lazydev" },
       { name = "nvim_lsp" },
       { name = "path" },
-      { name = "nvim_lsp_signature_help" },
     }, {
         { name = "buffer" },
       }),
