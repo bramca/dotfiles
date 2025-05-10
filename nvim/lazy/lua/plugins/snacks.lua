@@ -91,6 +91,7 @@ local M = {
           padding = 2
         },
         {
+          align = "center",
           section = "startup",
           padding = 2,
         },

@@ -77,6 +77,7 @@ vim.keymap.set("n", "<leader>fg", require("snacks").picker.git_files, { desc = "
 vim.keymap.set("n", "<leader>fr", require("snacks").picker.recent, { desc = "Find Recent Files" })
 vim.keymap.set("n", "<leader>fP", function() require("snacks").picker.files({ cwd = "~/dev" }) end, { desc = "Find Projects" })
 vim.keymap.set("n", "<leader>fn", function() require("snacks").picker.files({ cwd = "~/notes" }) end, { desc = "Find Notes" })
+vim.keymap.set("n", "<leader>ft", [[:TodoTrouble<CR>]], { desc = "Find TODOs" })
 vim.keymap.set("n", "<leader>fc", function() require("snacks").picker.files({ cwd = vim.fn.stdpath("config") }) end, { desc = "Find Config File" })
 vim.keymap.set("n", "<leader>f.", function() require("snacks").picker.files({ cwd = vim.fn.expand("%:p:h") }) end, { desc = "Find Files in Buffer Dir" })
 
