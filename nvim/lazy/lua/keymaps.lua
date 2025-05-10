@@ -10,6 +10,10 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap=true })
 vim.keymap.set("n", "<leader>nh", [[:nohl<CR>]], { desc = "No Highlight" })
 
+-- Maintenance
+vim.keymap.set("n", "<leader>L", [[:Lazy<CR>]], { desc = "Lazy Plugins" })
+vim.keymap.set("n", "<leader>M", [[:Mason<CR>]], { desc = "Mason" })
+
 -- REST Client
 vim.keymap.set("n", "<C-c><C-c>", [[:Rest run<CR>]], { noremap=true })
 
