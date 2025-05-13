@@ -46,6 +46,14 @@ vim.o.completeopt = 'menuone,noselect'
 vim.fn.sign_define("DapBreakpoint",{ text = "®", texthl = "", linehl = "", numhl = ""})
 vim.fn.sign_define("DapStopped",{ text = "»", texthl = "", linehl = "", numhl = ""})
 
+-- UUID gen
+vim.api.nvim_create_user_command('Uuid', function ()
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  local handle = io.popen('uuidgen | tr "[:upper:]" "[:lower:]" | tr -d "\n"')
+  local uuid = handle:read("*a")
+  vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, { uuid })
+end, {})
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })

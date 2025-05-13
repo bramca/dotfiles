@@ -94,7 +94,7 @@ vim.keymap.set("n", "<leader>sn", function() require("snacks").picker.grep({ cwd
 vim.keymap.set("n", "<leader>sb", require("snacks").picker.grep_buffers, { desc = "Search in Buffer Files" })
 vim.keymap.set("n", "<leader>sg", require("snacks").picker.grep, { desc = "Search Grep" })
 
--- Other
+-- Search
 vim.keymap.set("n", "<leader>sN", require("snacks").picker.notifications, { desc = "Search Notifications" })
 vim.keymap.set("n", '<leader>s"', require("snacks").picker.registers, { desc = "Search Registers" })
 vim.keymap.set("n", "<leader>sh", require("snacks").picker.help, { desc = "Search Help" })
@@ -147,3 +147,6 @@ vim.keymap.set("n", "<leader>bf", vim.lsp.buf.format, { desc = "Format current b
 -- TODO comments
 vim.keymap.set("n", "]t", function() require("todo-comments").jump_next() end, { desc = "Next TODO Comment" })
 vim.keymap.set("n", "[t", function() require("todo-comments").jump_prev() end, { desc = "Previous TODO Comment" })
+
+-- Other
+vim.keymap.set("n", "<leader>ug", [[:Uuid<CR>]], { desc = "UUID Generate" })
