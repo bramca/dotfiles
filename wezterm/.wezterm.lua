@@ -25,7 +25,7 @@ config.enable_tab_bar = false
 config.window_decorations = "RESIZE"
 
 -- enable window transparency
--- config.window_background_opacity = 0.92
+config.window_background_opacity = 0.92
 
 -- enable for blurring background when transparency is enabled
 -- config.macos_window_background_blur = 10

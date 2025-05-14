@@ -7,9 +7,9 @@ local M = {
 function M.config()
   require('github-theme').setup({
     options = {
-      dim_inactive = true,
+      -- dim_inactive = true,
       -- Enable for transparency, together with the terminal
-      -- transparent = true
+      transparent = true
     }
   })
 

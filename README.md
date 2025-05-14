@@ -1,48 +1,36 @@
 # Editor Configs
-This repo contains configuration files for multiple text editors on multiple OS'es.
+This repo contains configuration files for various tools in a folder convention so it can be used with [GNU Stow](https://www.gnu.org/software/stow/).<br>
+Just clone this repo in the `~` folder and run `stow [package]`
 
 # Folder Structure
-The folders are divided per text editor.<br>
+The folders are according to the `stow` convention with the config files stored per package as a folder.<br>
 
 example
 ``` text
 .
-├── README.md
-├── doom
-│   ├── config.el
-│   ├── custom.el
-│   ├── init.el
-│   └── packages.el
+├── doom-emacs
+│   └── .doom.d
+│       ├── config.el
+│       ├── init.el
+│       └── packages.el
 ├── emacs
+│   └── .emacs.d
+│       └── init.el
 ├── nvim
-│   ├── lazy
-│   │   ├── data
-│   │   │   └── telescope-sources
-│   │   │       └── my_symbols.json
-│   │   ├── init.lua
-│   │   └── lua
-│   │       ├── keymaps.lua
-│   │       ├── launch.lua
-│   │       ├── opts.lua
-│   │       └── plugins
-│   │           ├── autopairs.lua
-│   │           ├── bufferline.lua
-│   │           ├── colorizer.lua
-│   │           ├── colorscheme.lua
-│   │           └── yazi.lua
-│   └── packer
-│       └── init.lua
-├── spacemacs
-│   └── windows
+│   └── .config
+│       └── nvim
+│           ├── init.lua
+│           └── lua
+│               ├── keymaps.lua
+│               ├── launch.lua
+│               ├── opts.lua
+│               └── plugins
 ├── tmux
+│   └── .tmux.conf
 ├── vim
-└── vscode
-    ├── macos
-    │   ├── keybindings.json
-    │   └── settings.json
-    └── windows
-        ├── keybindings.json
-        └── settings.json
+│   └── .vimrc
+└── wezterm
+    └── .wezterm.lua
 ```
 
 # Useful External Tools
@@ -58,4 +46,5 @@ These are some external command line tools that can be useful to integrate in th
 - [powerlevel10k](https://github.com/romkatv/powerlevel10k): nice terminal theme
 - [lazydocker](https://github.com/jesseduffield/lazydocker): terminal docker container management
 - [lazysql](https://github.com/jorgerojas26/lazysql): terminal database management
-- [wezterm](https://wezterm.org/)
+- [wezterm](https://wezterm.org/): nice terminal emulator
+- [stow](https://www.gnu.org/software/stow/): for better dotfile management
