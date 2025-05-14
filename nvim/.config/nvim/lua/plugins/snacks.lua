@@ -44,7 +44,7 @@ local M = {
               icon = " ",
               key = "c",
               desc = "Config",
-              action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})"
+              action = ":lua Snacks.dashboard.pick('files', {cwd = '~/dotfiles'})"
             },
             {
               icon = " ",

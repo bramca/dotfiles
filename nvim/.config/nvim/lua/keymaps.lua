@@ -81,14 +81,14 @@ vim.keymap.set("n", "<leader>fg", require("snacks").picker.git_files, { desc = "
 vim.keymap.set("n", "<leader>fr", require("snacks").picker.recent, { desc = "Find Recent Files" })
 vim.keymap.set("n", "<leader>fP", function() require("snacks").picker.files({ cwd = "~/dev" }) end, { desc = "Find Projects" })
 vim.keymap.set("n", "<leader>fn", function() require("snacks").picker.files({ cwd = "~/notes" }) end, { desc = "Find Notes" })
-vim.keymap.set("n", "<leader>fc", function() require("snacks").picker.files({ cwd = vim.fn.stdpath("config") }) end, { desc = "Find Config File" })
+vim.keymap.set("n", "<leader>fc", function() require("snacks").picker.files({ cwd = "~/dotfiles" }) end, { desc = "Find Config File" })
 vim.keymap.set("n", "<leader>f.", function() require("snacks").picker.files({ cwd = vim.fn.expand("%:p:h") }) end, { desc = "Find Files in Buffer Dir" })
 
 -- Grep
 vim.keymap.set("n", "<leader>/", require("snacks").picker.lines, { desc = "Search Buffer" })
 vim.keymap.set("n", "<leader>s.", function() require("snacks").picker.grep({ cwd = vim.fn.expand("%:p:h") }) end, { desc = "Search in Buffer Dir" })
 vim.keymap.set("n", "<leader>sP", function() require("snacks").picker.grep({ cwd = "~/dev" }) end, { desc = "Search in Projects"})
-vim.keymap.set("n", "<leader>sc", function() require("snacks").picker.grep({ cwd = vim.fn.stdpath("config") }) end, { desc = "Search in Config Files"})
+vim.keymap.set("n", "<leader>sc", function() require("snacks").picker.grep({ cwd = "~/dotfiles" }) end, { desc = "Search in Config Files"})
 vim.keymap.set("n", "<leader>sw", require("snacks").picker.grep_word, { desc = "Search Word" })
 vim.keymap.set("n", "<leader>sn", function() require("snacks").picker.grep({ cwd = "~/notes" }) end, { desc = "Search in Notes"})
 vim.keymap.set("n", "<leader>sb", require("snacks").picker.grep_buffers, { desc = "Search in Buffer Files" })
