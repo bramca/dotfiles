@@ -33,18 +33,26 @@ example
     └── .wezterm.lua
 ```
 
-# Useful External Tools
-These are some external command line tools that can be useful to integrate in the editor.
+# Useful Tools
+
+## CLI Tools
 
 - [ripgrep](https://github.com/BurntSushi/ripgrep): faster grep
 - [fd](https://github.com/sharkdp/fd): faster file search
 - [btop](https://github.com/aristocratos/btop): checking processes in the terminal (better version of `top`)
+- [tldr](https://tldr.sh/): TLDR man pages
+- [stow](https://www.gnu.org/software/stow/): better dotfile management
+
+## TUI Tools
 - [lazygit](https://github.com/jesseduffield/lazygit): terminal ui for git doing git commands
-- [yazi](https://github.com/sxyazi/yazi): terminal file manager
-- [tmux](https://github.com/tmux/tmux/wiki): terminal multiplexer
-- [tmux-mem-cpu-load](https://github.com/thewtex/tmux-mem-cpu-load): see memory and cpu load in tmux status bar
-- [powerlevel10k](https://github.com/romkatv/powerlevel10k): nice terminal theme
 - [lazydocker](https://github.com/jesseduffield/lazydocker): terminal docker container management
 - [lazysql](https://github.com/jorgerojas26/lazysql): terminal database management
+- [yazi](https://github.com/sxyazi/yazi): terminal file manager
+
+## Terminal Stuff
 - [wezterm](https://wezterm.org/): nice terminal emulator
-- [stow](https://www.gnu.org/software/stow/): for better dotfile management
+- [tmux](https://github.com/tmux/tmux/wiki): terminal multiplexer
+- [tmux-mem-cpu-load](https://github.com/thewtex/tmux-mem-cpu-load): see memory and cpu load in tmux status bar
+- [oh-by-bash](https://github.com/ohmybash/oh-my-bash): level up for bashrc
+- [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh): level up for zhsrc
+- [powerlevel10k](https://github.com/romkatv/powerlevel10k): nice shell theme for zsh
