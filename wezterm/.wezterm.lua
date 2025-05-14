@@ -33,13 +33,13 @@ config.window_background_opacity = 0.92
 config.colors = {
   -- Overrides the cell background color when the current cell is occupied by the
   -- cursor and the cursor style is set to Block
-  cursor_bg = '#f1f1f1',
+  cursor_bg = '#5FAFFF',
   -- Overrides the text color when the current cell is occupied by the cursor
   cursor_fg = 'black',
   -- Specifies the border color of the cursor when the cursor style is set to Block,
   -- or the color of the vertical or horizontal bar when the cursor style is set to
   -- Bar or Underline.
-  cursor_border = '#f1f1f1'
+  cursor_border = '#5FAFFF'
 }
 
 -- and finally, return the configuration to wezterm

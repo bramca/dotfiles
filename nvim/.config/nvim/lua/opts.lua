@@ -54,7 +54,7 @@ vim.api.nvim_create_user_command('Uuid', function ()
   vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, { uuid })
 end, {})
 
--- [[ Highlight on yank ]]
+-- Highlight on yank
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -65,7 +65,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
 })
 
--- [[ Remove trailing whitespace on save ]]
+-- Remove trailing whitespace on save
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = {"*"},
   callback = function()
@@ -75,7 +75,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   end,
 })
 
--- [[ Set json formatter ]]
+-- Set json formatter
 vim.api.nvim_create_autocmd("FileType",  {
       pattern = { "json" },
       callback = function()

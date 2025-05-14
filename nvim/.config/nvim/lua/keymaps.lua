@@ -150,3 +150,7 @@ vim.keymap.set("n", "[t", function() require("todo-comments").jump_prev() end, {
 
 -- Other
 vim.keymap.set("n", "<leader>ug", [[:Uuid<CR>]], { desc = "UUID Generate" })
+vim.keymap.set("n", "<leader>ut", [[:TransparentOn<CR>]], { desc = "Turn On Transparency" })
+vim.keymap.set("n", "<leader>un", [[:TransparentOff<CR>]], { desc = "Turn Off Transparency" })
+vim.keymap.set("n", "<leader>ul", [[:LightTheme<CR>]], { desc = "Set Light Theme" })
+vim.keymap.set("n", "<leader>ud", [[:DarkTheme<CR>]], { desc = "Set Dark Theme" })

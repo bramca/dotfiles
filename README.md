@@ -9,10 +9,11 @@ example
 ``` text
 .
 ├── doom-emacs
-│   └── .doom.d
-│       ├── config.el
-│       ├── init.el
-│       └── packages.el
+│   └── .config
+│       └── doom
+│           ├── config.el
+│           ├── init.el
+│           └── packages.el
 ├── emacs
 │   └── .emacs.d
 │       └── init.el
