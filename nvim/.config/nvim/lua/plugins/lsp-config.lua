@@ -24,13 +24,25 @@ function M.config()
   --
   --  Add any additional override configuration in the following tables. They will be passed to
   --  the `settings` field of the server config. You must look up that documentation yourself.
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
   local servers = {
     -- clangd = {},
-    gopls = {},
-    pyright = {},
-    rust_analyzer = {},
-    -- tsserver = {},
+    gopls = {
+      capabilities = capabilities,
+    },
+    pyright = {
+      capabilities = capabilities,
+    },
+    rust_analyzer = {
+      capabilities = capabilities,
+    },
+    ts_ls = {
+      capabilities = capabilities,
+    },
     lua_ls = {
+      capabilities = capabilities,
       Lua = {
         workspace = {
           checkThirdParty = false,
@@ -39,24 +51,22 @@ function M.config()
     }
   }
 
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
+  for server, settings in pairs(servers) do
+     vim.lsp.config(server, {
+      settings = {
+        settings
+      }
+    })
+  end
 
   -- Ensure the servers above are installed
-  local mason_lspconfig = require 'mason-lspconfig'
 
-  mason_lspconfig.setup {
+
+   require('mason-lspconfig').setup({
     ensure_installed = vim.tbl_keys(servers),
-  }
+  })
 
-  mason_lspconfig.setup_handlers {
-    function(server_name)
-      require('lspconfig')[server_name].setup {
-        capabilities = capabilities,
-        settings = servers[server_name],
-      }
-    end,
-  }
 end
 
 return M
