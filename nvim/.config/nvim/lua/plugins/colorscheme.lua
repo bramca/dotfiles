@@ -8,9 +8,16 @@ local M = {
 function M.config()
   require('nightfox').setup({
     options = {
-      -- dim_inactive = true,
+      dim_inactive = true,
       -- Enable for transparency, together with the terminal
-      transparent = true
+      -- transparent = true
+    },
+    palettes = {
+      -- Custom nightfox with darker background
+      nightfox = {
+        bg1 = "#151b23", -- Darker background
+        bg0 = "#0c1116", -- Alt backgrounds (floats, statusline, ...)
+      },
     }
   })
 
@@ -22,6 +29,13 @@ function M.config()
       options = {
         dim_inactive = false,
         transparent = true,
+      },
+      palettes = {
+        -- Custom nightfox with darker background
+        nightfox = {
+          bg1 = "#151b23", -- Darker background
+          bg0 = "#0c1116", -- Alt backgrounds (floats, statusline, ...)
+        },
       }
     })
 
@@ -34,6 +48,13 @@ function M.config()
       options = {
         dim_inactive = true,
         transparent = false,
+      },
+      palettes = {
+        -- Custom nightfox with darker background
+        nightfox = {
+          bg1 = "#151b23", -- Darker background
+          bg0 = "#0c1116", -- Alt backgrounds (floats, statusline, ...)
+        },
       }
     })
 
@@ -54,6 +75,20 @@ function M.config()
 
   -- Toggle light theme
   vim.api.nvim_create_user_command('DarkTheme', function()
+    require('nightfox').setup({
+      options = {
+        dim_inactive = true,
+        transparent = false,
+      },
+      palettes = {
+        -- Custom nightfox with darker background
+        nightfox = {
+          bg1 = "#151b23", -- Darker background
+          bg0 = "#0c1116", -- Alt backgrounds (floats, statusline, ...)
+        },
+      }
+    })
+
     vim.cmd.colorscheme "nightfox"
   end, {})
 end

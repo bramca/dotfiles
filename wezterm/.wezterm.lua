@@ -41,7 +41,7 @@ config.colors = {
   -- Bar or Underline.
   cursor_border = '#659eda',
   foreground = "#cdcecf",
-  background = "#192330",
+  background = "#0c1116",
   compose_cursor = '#f4a261',
   selection_bg = "#2b3b51",
   selection_fg = "#cdcecf",
