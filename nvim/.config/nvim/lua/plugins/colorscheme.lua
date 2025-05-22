@@ -1,11 +1,10 @@
--- Github Theme
+-- NightFox Theme
 local M = {
-  'projekt0n/github-nvim-theme',
-  name = 'github-theme',
+  "EdenEast/nightfox.nvim"
 }
 
 function M.config()
-  require('github-theme').setup({
+  require('nightfox').setup({
     options = {
       -- dim_inactive = true,
       -- Enable for transparency, together with the terminal
@@ -13,11 +12,11 @@ function M.config()
     }
   })
 
-  vim.cmd.colorscheme "github_dark_default"
+  vim.cmd.colorscheme "nightfox"
 
   -- Turn on transparency
   vim.api.nvim_create_user_command('TransparentOn', function()
-    require('github-theme').setup({
+    require('nightfox').setup({
       options = {
         dim_inactive = false,
         transparent = true,
@@ -29,7 +28,7 @@ function M.config()
 
   -- Turn off transparency
   vim.api.nvim_create_user_command('TransparentOff', function()
-    require('github-theme').setup({
+    require('nightfox').setup({
       options = {
         dim_inactive = true,
         transparent = false,
@@ -41,20 +40,19 @@ function M.config()
 
   -- Toggle light theme
   vim.api.nvim_create_user_command('LightTheme', function()
-    local theme = require('github-theme')
-    theme.setup({
+    require('nightfox').setup({
       options = {
         dim_inactive = true,
         transparent = false,
       }
     })
 
-    vim.cmd.colorscheme "github_light_default"
+    vim.cmd.colorscheme "dayfox"
   end, {})
 
   -- Toggle light theme
   vim.api.nvim_create_user_command('DarkTheme', function()
-    vim.cmd.colorscheme "github_dark_default"
+    vim.cmd.colorscheme "nightfox"
   end, {})
 end
 

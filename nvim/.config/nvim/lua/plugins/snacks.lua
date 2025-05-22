@@ -114,6 +114,7 @@ local M = {
     scroll = { enabled = false },
     statuscolumn = { enabled = false },
     words = { enabled = false },
+    image = { enabled = false },
   },
 }
 

@@ -7,8 +7,8 @@ local config = wezterm.config_builder()
 -- Start fullscreen
 local mux = wezterm.mux
 
-wezterm.on('gui-startup', function(window)
-  local tab, pane, window = mux.spawn_window(cmd or {})
+wezterm.on('gui-startup', function(_)
+  local _, _, window = mux.spawn_window({})
   local gui_window = window:gui_window();
   gui_window:maximize()
 end)
@@ -39,7 +39,15 @@ config.colors = {
   -- Specifies the border color of the cursor when the cursor style is set to Block,
   -- or the color of the vertical or horizontal bar when the cursor style is set to
   -- Bar or Underline.
-  cursor_border = '#5FAFFF'
+  cursor_border = '#5FAFFF',
+  foreground = "#cdcecf",
+  background = "#192330",
+  compose_cursor = '#f4a261',
+  selection_bg = "#2b3b51",
+  selection_fg = "#cdcecf",
+  scrollbar_thumb = "#71839b",
+  split = "#131a24",
+  visual_bell = "#cdcecf",
 }
 
 -- and finally, return the configuration to wezterm

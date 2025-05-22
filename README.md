@@ -57,4 +57,5 @@ example
 - [oh-by-bash](https://github.com/ohmybash/oh-my-bash): level up for bashrc
 - [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh): level up for zhsrc
 - [powerlevel10k](https://github.com/romkatv/powerlevel10k): nice shell theme for zsh
-- [imagemagick](https://imagemagick.org/script/download.php)
+- [imagemagick](https://imagemagick.org/script/download.php): image processing in the terminal
+- [nightfox](https://github.com/EdenEast/nightfox.nvim): colorscheme
