@@ -1,6 +1,8 @@
 -- NightFox Theme
 local M = {
-  "EdenEast/nightfox.nvim"
+  "EdenEast/nightfox.nvim",
+  lazy = false,
+  priority = 1000,
 }
 
 function M.config()
