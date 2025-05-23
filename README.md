@@ -59,3 +59,4 @@ example
 - [powerlevel10k](https://github.com/romkatv/powerlevel10k): nice shell theme for zsh
 - [imagemagick](https://imagemagick.org/script/download.php): image processing in the terminal
 - [nightfox](https://github.com/EdenEast/nightfox.nvim): colorscheme
+- [avante](https://github.com/yetone/avante.nvim): llm integration in neovim
