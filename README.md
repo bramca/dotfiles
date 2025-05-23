@@ -50,7 +50,7 @@ example
 - [lazysql](https://github.com/jorgerojas26/lazysql): terminal database management
 - [yazi](https://github.com/sxyazi/yazi): terminal file manager
 
-## Terminal Stuff
+## Other Stuff
 - [wezterm](https://wezterm.org/): nice terminal emulator
 - [tmux](https://github.com/tmux/tmux/wiki): terminal multiplexer
 - [tmux-mem-cpu-load](https://github.com/thewtex/tmux-mem-cpu-load): see memory and cpu load in tmux status bar
