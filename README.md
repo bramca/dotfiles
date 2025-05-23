@@ -1,4 +1,4 @@
-# Editor Configs
+# dotfiles
 This repo contains configuration files for various tools in a folder convention so it can be used with [GNU Stow](https://www.gnu.org/software/stow/).<br>
 Just clone this repo in the `~` folder and run `stow [package]`
 
