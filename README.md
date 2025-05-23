@@ -45,12 +45,14 @@ example
 - [stow](https://www.gnu.org/software/stow/): better dotfile management
 
 ## TUI Tools
+
 - [lazygit](https://github.com/jesseduffield/lazygit): terminal ui for git doing git commands
 - [lazydocker](https://github.com/jesseduffield/lazydocker): terminal docker container management
 - [lazysql](https://github.com/jorgerojas26/lazysql): terminal database management
 - [yazi](https://github.com/sxyazi/yazi): terminal file manager
 
 ## Other Stuff
+
 - [wezterm](https://wezterm.org/): nice terminal emulator
 - [tmux](https://github.com/tmux/tmux/wiki): terminal multiplexer
 - [tmux-mem-cpu-load](https://github.com/thewtex/tmux-mem-cpu-load): see memory and cpu load in tmux status bar
