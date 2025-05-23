@@ -6,6 +6,10 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+-- Remap for scrolling
+vim.keymap.set('n', '<C-p>' , 'kzz', { silent = true })
+vim.keymap.set('n', '<C-n>' , 'jzz', { silent = true })
+
 -- Keymaps
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap=true })
 vim.keymap.set("n", "<leader>nh", [[:nohl<CR>]], { desc = "No Highlight" })
