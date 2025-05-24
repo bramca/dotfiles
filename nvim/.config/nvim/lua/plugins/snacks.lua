@@ -114,7 +114,16 @@ local M = {
     scroll = { enabled = false },
     statuscolumn = { enabled = false },
     words = { enabled = false },
-    image = { enabled = false },
+    image = {
+      enabled = true,
+      doc = {
+        inline = true,
+        float = true,
+        max_width = 60,
+        max_height = 30,
+
+      },
+    },
   },
 }
 
