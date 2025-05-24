@@ -11,6 +11,11 @@ function M.config()
       dim_inactive = true,
       -- Enable for transparency, together with the terminal
       -- transparent = true
+      styles = {
+        comments = "italic",
+        keywords = "bold",
+        types = "bold,italic",
+      }
     },
     palettes = {
       -- Custom nightfox with darker background
@@ -30,13 +35,6 @@ function M.config()
         dim_inactive = false,
         transparent = true,
       },
-      palettes = {
-        -- Custom nightfox with darker background
-        nightfox = {
-          bg1 = "#151b23", -- Darker background
-          bg0 = "#0c1116", -- Alt backgrounds (floats, statusline, ...)
-        },
-      }
     })
 
     vim.cmd.colorscheme(vim.g.colors_name)
@@ -49,13 +47,6 @@ function M.config()
         dim_inactive = true,
         transparent = false,
       },
-      palettes = {
-        -- Custom nightfox with darker background
-        nightfox = {
-          bg1 = "#151b23", -- Darker background
-          bg0 = "#0c1116", -- Alt backgrounds (floats, statusline, ...)
-        },
-      }
     })
 
     vim.cmd.colorscheme(vim.g.colors_name)
@@ -80,13 +71,6 @@ function M.config()
         dim_inactive = true,
         transparent = false,
       },
-      palettes = {
-        -- Custom nightfox with darker background
-        nightfox = {
-          bg1 = "#151b23", -- Darker background
-          bg0 = "#0c1116", -- Alt backgrounds (floats, statusline, ...)
-        },
-      }
     })
 
     vim.cmd.colorscheme "nightfox"
