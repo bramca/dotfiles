@@ -17,8 +17,8 @@ end)
 
 config.term = "wezterm"
 
-config.font = wezterm.font("FiraCode Nerd Font Mono")
-config.font_size = 13
+config.font = wezterm.font("JetBrains Mono")
+config.font_size = 14
 
 config.enable_tab_bar = false
 
