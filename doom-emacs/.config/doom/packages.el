@@ -51,3 +51,4 @@
 (package! rego-mode)
 (package! feature-mode)
 (package! csv-mode)
+(package! org-present)
