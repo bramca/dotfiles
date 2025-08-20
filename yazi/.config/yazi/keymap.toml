@@ -1,14 +1,14 @@
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on  = [ "t", "w" ]
 run = "shell '~/.config/tmux/scripts/tmux-windower $(pwd)'"
 desc = "Open tmux window in current dir"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on  = [ "t", "x" ]
 run = "shell '~/.config/tmux/scripts/tmux-sessionizer $(pwd)'"
 desc = "Open tmux session in current dir"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on  = [ "g", "p" ]
 run = "cd ~/dev"
 desc = "Open tmux session from current dir"
