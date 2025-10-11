@@ -40,6 +40,7 @@ example
 
 - [ripgrep](https://github.com/BurntSushi/ripgrep): faster grep
 - [fd](https://github.com/sharkdp/fd): faster file search
+- [fzf](https://github.com/junegunn/fzf): fuzzy find stuff
 - [btop](https://github.com/aristocratos/btop): checking processes in the terminal (better version of `top`)
 - [tldr](https://tldr.sh/): TLDR man pages
 - [stow](https://www.gnu.org/software/stow/): better dotfile management
