@@ -46,7 +46,7 @@ tic -x -o ~/.terminfo $tempfile
 rm $tempfile
 
 # dotfiles
-git clone https://github.com/bramca/dotfiles
+git clone git@github.com:bramca/dotfiles.git
 cd dotfiles
 stow wezterm
 stow nvim
