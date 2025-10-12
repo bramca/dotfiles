@@ -10,8 +10,7 @@ sudo apt update
 sudo apt install brave-browser stow tmux fd-find btop ripgrep fzf lua5.4 lua5.1 liblua5.4-dev liblua5.1-dev cargo npm wezterm tldr 7zip imagemagick
 
 # install oh-my-bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-
-my-bash/master/tools/install.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
 
 # install go
 wget https://go.dev/dl/go1.25.2.linux-amd64.tar.gz
