@@ -40,13 +40,6 @@ vim.keymap.set("n", "<leader>tb", [[:tabnew | terminal<CR>]], { desc = "Terminal
 
 -- Testing
 vim.keymap.set('n', '<leader>ts', [[:TestNearest<CR>]], { desc = 'Test Nearest' })
-vim.keymap.set("n", "<leader>ta", [[:lua require("neotest").run.run(vim.fn.expand("%"))<CR>]], { desc = "Test All in File" })
-vim.keymap.set("n", "<leader>ti", [[:lua require("neotest").run.run()<CR>]], { desc = "Test Nearest with Neo" })
-vim.keymap.set("n", "<leader>tr", [[:lua require("neotest").run.run({vim.fn.getcwd(), extra_args = {"./..."}})<CR>]], { desc = "Test All in Project Root" })
-vim.keymap.set("n", "<leader>os", [[:lua require("neotest").summary.open()<CR>]], { desc = "Open Test Summary" })
-vim.keymap.set("n", "<leader>cs", [[:lua require("neotest").summary.close()<CR>]], { desc = "Close Test Summary" })
-vim.keymap.set("n", "<leader>oo", [[:lua require("neotest").output_panel.open()<CR>]], { desc = "Open Test Output panel" })
-vim.keymap.set("n", "<leader>co", [[:lua require("neotest").output_panel.close()<CR>]], { desc = "Close Test Output panel" })
 vim.keymap.set("n", "<leader>td", [[:lua require("dap-go").debug_test()<CR>]], { desc = "Test Debug" })
 
 -- Git
