@@ -26,6 +26,9 @@ cargo install --locked tree-sitter-cli
 # install lazygit
 go install github.com/jesseduffield/lazygit@latest
 
+# install go debugger
+go install github.com/go-delve/delve/cmd/dlv@latest
+
 # install yazi
 git clone https://github.com/sxyazi/yazi.git
 cd yazi

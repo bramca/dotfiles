@@ -2,6 +2,7 @@
 local M = {
   'nvim-treesitter/nvim-treesitter',
   lazy = false,
+  branch = 'master', -- TODO: stale branch, should update to 'main'
 }
 
 function M.build()

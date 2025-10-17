@@ -20,7 +20,8 @@ vim.wo.relativenumber = true
 vim.o.mouse = 'a'
 
 -- System Clipboard
-vim.o.clipboard = 'unnamed'
+-- mac os: 'unnamed', linux: 'unnamedplus'
+vim.o.clipboard = 'unnamedplus'
 
 -- Enable break indent
 vim.o.breakindent = true
