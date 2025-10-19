@@ -39,9 +39,7 @@ tabline.setup({
     },
     tab_inactive = {
       'index',
-      { 'parent', padding = 0 },
-      '/',
-      { 'cwd',    padding = { left = 0, right = 1 } },
+      { 'cwd', max_length = 10, padding = { left = 0, right = 1 } },
     },
     tabline_x = { 'ram', 'cpu' },
     tabline_y = { 'datetime', 'battery' },
@@ -100,6 +98,54 @@ config.colors = {
   tab_bar = {
     background = "#0c1116",
   }
+}
+
+local act = wezterm.action
+
+config.keys = {
+  -- Switch to the default workspace
+  {
+    key = 'y',
+    mods = 'CTRL|SHIFT',
+    action = act.SwitchToWorkspace {
+      name = 'default',
+    },
+  },
+  {
+    key = 's',
+    mods = 'CTRL|SHIFT',
+    action = act.ShowLauncherArgs {
+      flags = 'FUZZY|WORKSPACES',
+    },
+  },
+  { key = 'i',
+    mods = 'CTRL|SHIFT',
+    action = act.SwitchToWorkspace
+  },
+  {
+    key = 'w',
+    mods = 'CTRL|SHIFT',
+    action = act.PromptInputLine {
+      description = wezterm.format {
+        { Attribute = { Intensity = 'Bold' } },
+        { Foreground = { AnsiColor = 'Fuchsia' } },
+        { Text = 'Enter name for new workspace' },
+      },
+      action = wezterm.action_callback(function(window, pane, line)
+        -- line will be `nil` if they hit escape without entering anything
+        -- An empty string if they just hit enter
+        -- Or the actual line of text they wrote
+        if line then
+          window:perform_action(
+            act.SwitchToWorkspace {
+              name = line,
+            },
+            pane
+          )
+        end
+      end),
+    },
+  },
 }
 
 -- and finally, return the configuration to wezterm
