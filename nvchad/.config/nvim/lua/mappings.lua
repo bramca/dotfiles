@@ -153,4 +153,5 @@ map("n", "[t", function() require("todo-comments").jump_prev() end, { desc = "Pr
 -- Other
 map("n", "<leader>ug", [[:Uuid<CR>]], { desc = "UUID Generate" })
 map("n", "<leader>ut", require("base46").toggle_transparency, { desc = "Toggle Transparency" })
+map("n", "<leader>st", require("base46").toggle_theme, { desc = "Switch Theme" })
 map("n", "<leader>ct", [[:lua require("nvchad.themes").open()<CR>]], { desc = "Change Theme" })

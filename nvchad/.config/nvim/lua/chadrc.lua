@@ -7,13 +7,14 @@ local M = {}
 
 M.base46 = {
     theme = "nightfox",
-    transparency = true,
+    transparency = false,
     hl_override = {
         Comment = { italic = true },
         ["@comment"] = { italic = true },
         Keyword = { bold = true },
         Type = { bold = true, italic = true },
     },
+    theme_toggle = { "nightfox", "one_light" },
 }
 
 M.ui = {
