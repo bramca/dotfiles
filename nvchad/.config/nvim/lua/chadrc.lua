@@ -11,6 +11,8 @@ M.base46 = {
     hl_override = {
         Comment = { italic = true },
         ["@comment"] = { italic = true },
+        Keyword = { bold = true },
+        Type = { bold = true, italic = true },
     },
 }
 

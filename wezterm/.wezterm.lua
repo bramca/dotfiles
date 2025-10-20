@@ -10,7 +10,7 @@ local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabl
 tabline.setup({
   options = {
     icons_enabled = true,
-    theme = 'carbonfox',
+    theme = 'nightfox',
     tabs_enabled = true,
     theme_overrides = {
       tab = {

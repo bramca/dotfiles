@@ -84,6 +84,7 @@ map("n", "<leader>fg", require("snacks").picker.git_files, { desc = "Find Git Fi
 map("n", "<leader>fr", require("snacks").picker.recent, { desc = "Find Recent Files" })
 map("n", "<leader>fP", function() require("snacks").picker.files({ cwd = "~/dev" }) end, { desc = "Find Projects" })
 map("n", "<leader>fn", function() require("snacks").picker.files({ cwd = "~/notes" }) end, { desc = "Find Notes" })
+vim.keymap.set("n", "<leader>fs", function() require("snacks").picker.files({ cwd = "~/temp/scripts" }) end, { desc = "Find Scripts" })
 map("n", "<leader>fc", function() require("snacks").picker.files({ cwd = "~/dotfiles" }) end, { desc = "Find Config File" })
 map("n", "<leader>f.", function() require("snacks").picker.files({ cwd = vim.fn.expand("%:p:h") }) end, { desc = "Find Files in Buffer Dir" })
 
@@ -112,8 +113,6 @@ map("n", "<leader>su", require("snacks").picker.undo, { desc = "Search Undo Hist
 -- Diagnostic keymaps
 map("n", "<leader>sd", require("snacks").picker.diagnostics, { desc = "Search Diagnostics" })
 map("n", "<leader>sD", require("snacks").picker.diagnostics_buffer, { desc = "Search Buffer Diagnostics" })
-map("n", "[d", vim.diagnostic.goto_prev, { desc = 'Diagnostic Previous Issue' })
-map("n", "]d", vim.diagnostic.goto_next, { desc = 'Diagnostic Next Issue' })
 map("n", "<leader>e", vim.diagnostic.open_float, { desc = 'Diagnostic Open issue Info' })
 map("n", "<leader>q", vim.diagnostic.setloclist, { desc = 'Diagnostic Show Locations' })
 map("n", "<leader>xw", [[:Trouble diagnostics toggle<CR>]], { desc = "Open Workspace Diagnostics" })
@@ -153,3 +152,5 @@ map("n", "[t", function() require("todo-comments").jump_prev() end, { desc = "Pr
 
 -- Other
 map("n", "<leader>ug", [[:Uuid<CR>]], { desc = "UUID Generate" })
+map("n", "<leader>ut", require("base46").toggle_transparency, { desc = "Toggle Transparency" })
+map("n", "<leader>ct", [[:lua require("nvchad.themes").open()<CR>]], { desc = "Change Theme" })
