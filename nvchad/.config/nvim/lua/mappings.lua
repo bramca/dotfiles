@@ -18,7 +18,7 @@ map('n', '<C-n>' , 'jzz', { silent = true })
 
 -- Keymaps
 map("t", "<Esc>", [[<C-\><C-n>]], { noremap=true })
-map("n", "<leader>nh", [[:nohl<CR>]], { desc = "No Highlight" })
+map("n", "<leader>k", [[:nohl<CR>]], { desc = "No Highlight" })
 
 -- Maintenance
 map("n", "<leader>L", [[:Lazy<CR>]], { desc = "Lazy Plugins" })
