@@ -29,6 +29,11 @@ go install github.com/jesseduffield/lazygit@latest
 # install go debugger
 go install github.com/go-delve/delve/cmd/dlv@latest
 
+# install formatters
+go install golang.org/x/tools/cmd/goimports@latest
+sudo npm install -g prettier
+cargo install stylua
+
 # install yazi
 git clone https://github.com/sxyazi/yazi.git
 cd yazi
