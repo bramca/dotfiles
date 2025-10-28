@@ -44,6 +44,12 @@ require("telescope").setup {
   },
 }
 
+require("nvim-tree").setup {
+  git = {
+    enable = false,
+  },
+}
+
 vim.schedule(function()
   require "mappings"
 end)
