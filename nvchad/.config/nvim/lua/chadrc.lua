@@ -75,7 +75,6 @@ M.nvdash = {
 }
 
 M.term = {
-  winopts = { number = true, relativenumber = true },
   sizes = { sp = 0.4, vsp = 0.4, ["bo sp"] = 0.4, ["bo vsp"] = 0.4 },
   float = {
     relative = "editor",
