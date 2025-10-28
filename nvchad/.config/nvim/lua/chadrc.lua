@@ -56,7 +56,7 @@ M.nvdash = {
     { txt = "󰈚  Recent Files", keys = "r", cmd = "Telescope oldfiles" },
     { txt = "  Find Projects", keys = "p", cmd = "Telescope find_files cwd=~/dev" },
     { txt = "  Find Config", keys = "c", cmd = "Telescope find_files cwd=~/dotfiles hidden=true" },
-    { txt = "  File Manager", keys = "-", cmd = "Yazi" },
+    { txt = "  File Notes", keys = "n", cmd = "Telescope find_files cwd=~/notes" },
     { txt = "󱐥  Plugins", keys = "l", cmd = "Lazy" },
     { txt = "  Mason", keys = "m", cmd = "Mason" },
 
