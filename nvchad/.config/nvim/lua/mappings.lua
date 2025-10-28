@@ -69,9 +69,7 @@ map(
 )
 
 -- Find Files
-map("n", "<leader>fe", function()
-  require("snacks").explorer()
-end, { desc = "File Explorer " })
+map("n", "<leader>fe", [[:NvimTreeToggle<CR>]], { desc = "File Explorer " })
 map("n", "<leader>ff", function()
   require("telescope.builtin").find_files { hidden = true }
 end, { desc = "Find Files" })
