@@ -71,7 +71,7 @@ config.use_fancy_tab_bar = false
 config.window_decorations = "RESIZE"
 
 -- enable window transparency
-config.window_background_opacity = 0.92
+config.window_background_opacity = 0.85
 
 -- enable for blurring background when transparency is enabled
 -- config.macos_window_background_blur = 10
@@ -101,133 +101,131 @@ config.colors = {
 	},
 }
 
--- local act = wezterm.action
---
--- config.keys = {
--- 	-- Switch to the default workspace
--- 	{
--- 		key = "y",
--- 		mods = "CTRL|SHIFT",
--- 		action = act.SwitchToWorkspace({
--- 			name = "default",
--- 		}),
--- 	},
--- 	{
--- 		key = "s",
--- 		mods = "CTRL|SHIFT",
--- 		action = act.ShowLauncherArgs({
--- 			flags = "FUZZY|WORKSPACES",
--- 		}),
--- 	},
--- 	{ key = "i", mods = "CTRL|SHIFT", action = act.SwitchToWorkspace },
--- 	{
--- 		key = "w",
--- 		mods = "CTRL|SHIFT",
--- 		action = act.PromptInputLine({
--- 			description = wezterm.format({
--- 				{ Attribute = { Intensity = "Bold" } },
--- 				{ Foreground = { AnsiColor = "Fuchsia" } },
--- 				{ Text = "Enter name for new workspace" },
--- 			}),
--- 			action = wezterm.action_callback(function(window, pane, line)
--- 				-- line will be `nil` if they hit escape without entering anything
--- 				-- An empty string if they just hit enter
--- 				-- Or the actual line of text they wrote
--- 				if line then
--- 					window:perform_action(
--- 						act.SwitchToWorkspace({
--- 							name = line,
--- 						}),
--- 						pane
--- 					)
--- 				end
--- 			end),
--- 		}),
--- 	},
--- }
---
+local act = wezterm.action
+
+-- Workspace keybindings
+config.keys = {
+	{
+		key = "y",
+		mods = "CTRL|SHIFT",
+		action = act.SwitchToWorkspace({
+			name = "default",
+		}),
+	},
+	{
+		key = "s",
+		mods = "CTRL|SHIFT",
+		action = act.ShowLauncherArgs({
+			flags = "FUZZY|WORKSPACES",
+		}),
+	},
+	{ key = "i", mods = "CTRL|SHIFT", action = act.SwitchToWorkspace },
+	{
+		key = "w",
+		mods = "CTRL|SHIFT",
+		action = act.PromptInputLine({
+			description = wezterm.format({
+				{ Attribute = { Intensity = "Bold" } },
+				{ Foreground = { AnsiColor = "Fuchsia" } },
+				{ Text = "Enter name for new workspace" },
+			}),
+			action = wezterm.action_callback(function(window, pane, line)
+				-- line will be `nil` if they hit escape without entering anything
+				-- An empty string if they just hit enter
+				-- Or the actual line of text they wrote
+				if line then
+					window:perform_action(
+						act.SwitchToWorkspace({
+							name = line,
+						}),
+						pane
+					)
+				end
+			end),
+		}),
+	},
+}
+
 -- -- Tmux like keybindings
 config.leader = { key = "q", mods = "CTRL", timeout_milliseconds = 2000 }
-
-local action = wezterm.action
 
 config.keys = {
 	{
 		key = "\\",
 		mods = "LEADER",
-		action = action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+		action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }),
 	},
 	{
 		key = "h",
 		mods = "CTRL|SHIFT",
-		action = action.ActivatePaneDirection("Left"),
+		action = act.ActivatePaneDirection("Left"),
 	},
 	{
 		key = "j",
 		mods = "CTRL|SHIFT",
-		action = action.ActivatePaneDirection("Down"),
+		action = act.ActivatePaneDirection("Down"),
 	},
 	{
 		key = "k",
 		mods = "CTRL|SHIFT",
-		action = action.ActivatePaneDirection("Up"),
+		action = act.ActivatePaneDirection("Up"),
 	},
 	{
 		key = "l",
 		mods = "CTRL|SHIFT",
-		action = action.ActivatePaneDirection("Right"),
+		action = act.ActivatePaneDirection("Right"),
 	},
 	{
 		key = "h",
 		mods = "CTRL|ALT",
-		action = action.AdjustPaneSize({ "Left", 5 }),
+		action = act.AdjustPaneSize({ "Left", 5 }),
 	},
 	{
 		key = "l",
 		mods = "CTRL|ALT",
-		action = action.AdjustPaneSize({ "Right", 5 }),
+		action = act.AdjustPaneSize({ "Right", 5 }),
 	},
 	{
 		key = "j",
 		mods = "CTRL|ALT",
-		action = action.AdjustPaneSize({ "Down", 5 }),
+		action = act.AdjustPaneSize({ "Down", 5 }),
 	},
 	{
 		key = "k",
 		mods = "CTRL|ALT",
-		action = action.AdjustPaneSize({ "Up", 5 }),
+		action = act.AdjustPaneSize({ "Up", 5 }),
 	},
 	{
 		key = "-",
 		mods = "LEADER",
-		action = action.SplitVertical({ domain = "CurrentPaneDomain" }),
+		action = act.SplitVertical({ domain = "CurrentPaneDomain" }),
 	},
 	{
 		key = "m",
 		mods = "LEADER",
-		action = action.TogglePaneZoomState,
+		action = act.TogglePaneZoomState,
 	},
-	{ key = "[", mods = "LEADER", action = action.ActivateCopyMode },
+	{ key = "[", mods = "LEADER", action = act.ActivateCopyMode },
 	{
 		key = "c",
 		mods = "LEADER",
-		action = action.SpawnTab("CurrentPaneDomain"),
+		action = act.SpawnTab("CurrentPaneDomain"),
 	},
 
 	{
 		key = "p",
 		mods = "LEADER",
-		action = action.ActivateTabRelative(-1),
+		action = act.ActivateTabRelative(-1),
 	},
 	{
 		key = "n",
 		mods = "LEADER",
-		action = action.ActivateTabRelative(1),
+		action = act.ActivateTabRelative(1),
 	},
 	{
 		key = "/",
 		mods = "LEADER",
-		action = action.Search("CurrentSelectionOrEmptyString"),
+		action = act.Search("CurrentSelectionOrEmptyString"),
 	},
 }
 
@@ -235,7 +233,7 @@ for i = 1, 9 do
 	table.insert(config.keys, {
 		key = tostring(i),
 		mods = "LEADER",
-		action = action.ActivateTab(i - 1),
+		action = act.ActivateTab(i - 1),
 	})
 end
 
