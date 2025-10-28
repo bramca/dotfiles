@@ -12,6 +12,19 @@ map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+-- Terminal toggle
+map({ "n", "t" }, "<A-v>", function()
+  require("nvchad.term").toggle { pos = "vsp", id = "vtoggleTerm:" .. vim.fn.getcwd() }
+end, { desc = "terminal toggleable vertical term" })
+
+map({ "n", "t" }, "<A-h>", function()
+  require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm:" .. vim.fn.getcwd() }
+end, { desc = "terminal toggleable horizontal term" })
+
+map({ "n", "t" }, "<A-i>", function()
+  require("nvchad.term").toggle { pos = "float", id = "floatTerm:" .. vim.fn.getcwd() }
+end, { desc = "terminal toggle floating term" })
+
 -- Remap for scrolling
 map("n", "<C-p>", "kzz", { silent = true })
 map("n", "<C-n>", "jzz", { silent = true })
@@ -27,38 +40,6 @@ map("n", "<leader>M", [[:Mason<CR>]], { desc = "Mason" })
 -- REST Client
 map("n", "<C-c><C-c>", [[:Rest run<CR>]], { noremap = true })
 
--- Float Terminal
-map("n", "<leader>ot", [[:FloatermToggle<CR>]], { desc = "Open Terminal" })
-map("n", "<leader>nt", [[:FloatermNew! --height=0.8 --width=0.8<CR>]], { desc = "New Terminal" })
-map("n", "<leader>th", [[:FloatermNew! --height=0.8 --width=0.8 cd %:p:h<CR>]], { desc = "New Terminal Here" })
-map("n", "<leader>tn", [[:FloatermNext<CR>]], { desc = "Terminal Next" })
-map(
-  "n",
-  "<leader>cx",
-  [[:FloatermUpdate --wintype=split --height=0.3<CR>]],
-  { desc = "Change Terminal to Horizontal Split" }
-)
-map(
-  "n",
-  "<leader>cv",
-  [[:FloatermUpdate --wintype=vsplit --width=0.5<CR>]],
-  { desc = "Change Terminal to Vertical Split" }
-)
-map(
-  "n",
-  "<leader>cf",
-  [[:FloatermUpdate --wintype=float --width=0.8 --height=0.8 --position=center<CR>]],
-  { desc = "Change Terminal to Floating" }
-)
-map("n", "<leader>tp", [[:FloatermNew --height=0.8 --width=0.8 btop<CR>]], { desc = "Terminal Processes" })
-map("n", "<leader>ld", [[:FloatermNew --height=0.8 --width=0.8 lazydocker<CR>]], { desc = "Lazy Docker" })
-map("n", "<leader>lq", [[:FloatermNew --height=0.8 --width=0.8 lazysql<CR>]], { desc = "Lazy SQL" })
-
--- Terminal
-map("n", "<leader>tv", [[:vsplit | terminal<CR>]], { desc = "Terminal in Vertical Split" })
-map("n", "<leader>tx", [[:split | terminal<CR>]], { desc = "Terminal in Horizontal Split" })
-map("n", "<leader>tb", [[:tabnew | terminal<CR>]], { desc = "Terminal in New Tab" })
-
 -- Testing
 map("n", "<leader>ts", [[:TestNearest<CR>]], { desc = "Test Nearest" })
 map("n", "<leader>td", [[:lua require("dap-go").debug_test()<CR>]], { desc = "Test Debug" })
@@ -71,33 +52,6 @@ end, { desc = "Lazy Git" })
 -- Buffer switch
 map("n", "<leader>bl", [[:b#<CR>]], { desc = "Previous Buffer" })
 map("n", "<leader>bh", [[:bn<CR>]], { desc = "Next Buffer" })
-
-map("n", "<leader>ha", function()
-  require("harpoon"):list():add()
-end, { desc = "Harpoon Add file" })
-map("n", "<C-e>", function()
-  require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
-end, { desc = "Harpoon Quick Menu" })
-
-map("n", "<C-a>", function()
-  require("harpoon"):list():select(1)
-end, { desc = "Harpoon file 1" })
-map("n", "<C-d>", function()
-  require("harpoon"):list():select(2)
-end, { desc = "Harpoon file 2" })
-map("n", "<C-g>", function()
-  require("harpoon"):list():select(3)
-end, { desc = "Harpoon file 3" })
-map("n", "<C-j>", function()
-  require("harpoon"):list():select(4)
-end, { desc = "Harpoon file 4" })
-
-map("n", "<leader>hp", function()
-  require("harpoon"):list():prev()
-end, { desc = "Harpoon Previous buffer" })
-map("n", "<leader>hn", function()
-  require("harpoon"):list():next()
-end, { desc = "Harpoon Next buffer" })
 
 -- DAP (Debug Adapter Protocol)
 map("n", "<leader>dc", require("dap").continue, { desc = "DAP Continue" })
@@ -117,67 +71,66 @@ map(
 -- Find Files
 map("n", "<leader>fe", function()
   require("snacks").explorer()
-end, { desc = "File Explorer" })
-map("n", "<leader>ff", require("snacks").picker.files, { desc = "Find Files" })
-map("n", "<leader>fb", require("snacks").picker.buffers, { desc = "Find Buffers" })
-map("n", "<leader>fg", require("snacks").picker.git_files, { desc = "Find Git Files" })
-map("n", "<leader>fr", require("snacks").picker.recent, { desc = "Find Recent Files" })
+end, { desc = "File Explorer " })
+map("n", "<leader>ff", function()
+  require("telescope.builtin").find_files { hidden = true }
+end, { desc = "Find Files" })
+map("n", "<leader>fb", require("telescope.builtin").buffers, { desc = "Find Buffers" })
+map("n", "<leader>fg", require("telescope.builtin").git_files, { desc = "Find Git Files" })
+map("n", "<leader>fr", require("telescope.builtin").oldfiles, { desc = "Find Recent Files" })
 map("n", "<leader>fP", function()
-  require("snacks").picker.files { cwd = "~/dev" }
+  require("telescope.builtin").find_files { cwd = "~/dev", hidden = true }
 end, { desc = "Find Projects" })
 map("n", "<leader>fn", function()
-  require("snacks").picker.files { cwd = "~/notes" }
+  require("telescope.builtin").find_files { cwd = "~/notes", hidden = true }
 end, { desc = "Find Notes" })
 vim.keymap.set("n", "<leader>fs", function()
-  require("snacks").picker.files { cwd = "~/temp/scripts" }
+  require("telescope.builtin").find_files { cwd = "~/temp/scripts", hidden = true }
 end, { desc = "Find Scripts" })
 map("n", "<leader>fc", function()
-  require("snacks").picker.files { cwd = "~/dotfiles" }
+  require("telescope.builtin").find_files { cwd = "~/dotfiles", hidden = true }
 end, { desc = "Find Config File" })
 map("n", "<leader>f.", function()
-  require("snacks").picker.files { cwd = vim.fn.expand "%:p:h" }
+  require("telescope.builtin").find_files { cwd = vim.fn.expand "%:p:h", hidden = true }
 end, { desc = "Find Files in Buffer Dir" })
 
 -- Grep
-map("n", "<leader>/", require("snacks").picker.lines, { desc = "Search Buffer" })
+map("n", "<leader>/", require("telescope.builtin").current_buffer_fuzzy_find, { desc = "Search Buffer" })
 map("n", "<leader>s.", function()
-  require("snacks").picker.grep { cwd = vim.fn.expand "%:p:h" }
+  require("telescope.builtin").live_grep { cwd = vim.fn.expand "%:p:h" }
 end, { desc = "Search in Buffer Dir" })
 map("n", "<leader>sP", function()
-  require("snacks").picker.grep { cwd = "~/dev" }
+  require("telescope.builtin").live_grep { cwd = "~/dev", hidden = true }
 end, { desc = "Search in Projects" })
 map("n", "<leader>sc", function()
-  require("snacks").picker.grep { cwd = "~/dotfiles" }
+  require("telescope.builtin").live_grep { cwd = "~/dotfiles", hidden = true }
 end, { desc = "Search in Config Files" })
-map("n", "<leader>sw", require("snacks").picker.grep_word, { desc = "Search Word" })
 map("n", "<leader>sn", function()
-  require("snacks").picker.grep { cwd = "~/notes" }
+  require("telescope.builtin").live_grep { cwd = "~/notes", hidden = true }
 end, { desc = "Search in Notes" })
-map("n", "<leader>sb", require("snacks").picker.grep_buffers, { desc = "Search in Buffer Files" })
-map("n", "<leader>sg", require("snacks").picker.grep, { desc = "Search Grep" })
+map("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "Search Grep" })
 
 -- Search
+map("n", '<leader>s"', require("telescope.builtin").registers, { desc = "Search Registers" })
+map("n", "<leader>sh", require("telescope.builtin").help_tags, { desc = "Search Help" })
+map("n", "<leader>sH", require("telescope.builtin").command_history, { desc = "Search Command History" })
+map("n", "<leader>sC", require("telescope.builtin").commands, { desc = "Search Command" })
+map("n", "<leader>sk", require("telescope.builtin").keymaps, { desc = "Search Keymaps" })
+map("n", "<leader>sM", require("telescope.builtin").man_pages, { desc = "Search Man Pages" })
 map("n", "<leader>sN", require("snacks").picker.notifications, { desc = "Search Notifications" })
-map("n", '<leader>s"', require("snacks").picker.registers, { desc = "Search Registers" })
-map("n", "<leader>sh", require("snacks").picker.help, { desc = "Search Help" })
-map("n", "<leader>sH", require("snacks").picker.command_history, { desc = "Search Command History" })
-map("n", "<leader>sC", require("snacks").picker.commands, { desc = "Search Command" })
-map("n", "<leader>sk", require("snacks").picker.keymaps, { desc = "Search Keymaps" })
-map("n", "<leader>sM", require("snacks").picker.man, { desc = "Search Man Pages" })
 map("n", "<leader>si", require("snacks").picker.icons, { desc = "Search Icons" })
 map("n", "<leader>sp", require("snacks").picker.lazy, { desc = "Search Plugins" })
 map("n", "<leader>su", require("snacks").picker.undo, { desc = "Search Undo History" })
 
 -- Diagnostic keymaps
-map("n", "<leader>sd", require("snacks").picker.diagnostics, { desc = "Search Diagnostics" })
-map("n", "<leader>sD", require("snacks").picker.diagnostics_buffer, { desc = "Search Buffer Diagnostics" })
+map("n", "<leader>sd", require("telescope.builtin").diagnostics, { desc = "Search Diagnostics" })
 map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Diagnostic Open issue Info" })
 map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Diagnostic Show Locations" })
-map("n", "<leader>xw", [[:Trouble diagnostics toggle<CR>]], { desc = "Open Workspace Diagnostics" })
-map("n", "<leader>xd", [[:Trouble diagnostics toggle filter.buf=0<CR>]], { desc = "Open Document Diagnostics" })
-map("n", "<leader>xq", [[:Trouble quickfix toggle<CR>]], { desc = "Open Diagnostics Quickfix List" })
-map("n", "<leader>xl", [[:Trouble loclist toggle<CR>]], { desc = "Open Diagnostics Location List" })
-map("n", "<leader>xt", [[:Trouble todo toggle<CR>]], { desc = "Open TODOs" })
+map("n", "<leader>Xw", [[:Trouble diagnostics toggle<CR>]], { desc = "Open Workspace Diagnostics" })
+map("n", "<leader>Xd", [[:Trouble diagnostics toggle filter.buf=0<CR>]], { desc = "Open Document Diagnostics" })
+map("n", "<leader>Xq", [[:Trouble quickfix toggle<CR>]], { desc = "Open Diagnostics Quickfix List" })
+map("n", "<leader>Xl", [[:Trouble loclist toggle<CR>]], { desc = "Open Diagnostics Location List" })
+map("n", "<leader>Xt", [[:Trouble todo toggle<CR>]], { desc = "Open TODOs" })
 
 -- Yazi
 map("n", "<leader>-", function()
@@ -191,11 +144,11 @@ end, { desc = "Open Yazi File Manager Current Working Dir" })
 map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename" })
 map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
 map("n", "gd", vim.lsp.buf.definition, { desc = "Goto Definition" })
-map("n", "gr", require("snacks").picker.lsp_references, { desc = "Goto References" })
+map("n", "gr", require("telescope.builtin").lsp_references, { desc = "Goto References" })
 map("n", "gI", vim.lsp.buf.implementation, { desc = "Goto Implementation" })
 map("n", "<leader>D", vim.lsp.buf.type_definition, { desc = "Type Definition" })
-map("n", "<leader>ds", require("snacks").picker.lsp_symbols, { desc = "Document Symbols" })
-map("n", "<leader>ws", require("snacks").picker.lsp_workspace_symbols, { desc = "Workspace Symbols" })
+map("n", "<leader>ds", require("telescope.builtin").lsp_document_symbols, { desc = "Document Symbols" })
+map("n", "<leader>ws", require("telescope.builtin").lsp_workspace_symbols, { desc = "Workspace Symbols" })
 
 -- See `:help K` for why this keymap
 map("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
