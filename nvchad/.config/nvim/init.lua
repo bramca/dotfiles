@@ -28,11 +28,21 @@ require("lazy").setup({
 
 -- load theme
 for _, v in ipairs(vim.fn.readdir(vim.g.base46_cache)) do
-    dofile(vim.g.base46_cache .. v)
+  dofile(vim.g.base46_cache .. v)
 end
 
 require "options"
 require "autocmds"
+
+require("telescope").setup {
+  defaults = {
+    file_ignore_patterns = {
+      "node_modules",
+      ".git",
+      "venv",
+    },
+  },
+}
 
 vim.schedule(function()
   require "mappings"

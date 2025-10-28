@@ -52,7 +52,7 @@ M.nvdash = {
     "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀ ⠀⠀   ⠀⠀⠀⠀ ",
   },
   buttons = {
-    { txt = "  Find File", keys = "f", cmd = "Telescope find_files" },
+    { txt = "  Find File", keys = "f", cmd = "Telescope find_files hidden=true" },
     { txt = "󰈚  Recent Files", keys = "r", cmd = "Telescope oldfiles" },
     { txt = "  Find Projects", keys = "p", cmd = "Telescope find_files cwd=~/dev" },
     { txt = "  Find Config", keys = "c", cmd = "Telescope find_files cwd=~/dotfiles hidden=true" },
