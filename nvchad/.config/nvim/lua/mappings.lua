@@ -95,7 +95,7 @@ end, { desc = "Find Files in Buffer Dir" })
 -- Grep
 map("n", "<leader>/", require("telescope.builtin").current_buffer_fuzzy_find, { desc = "Search Buffer" })
 map("n", "<leader>s.", function()
-  require("telescope.builtin").live_grep { cwd = vim.fn.expand "%:p:h" }
+  require("telescope.builtin").live_grep { cwd = vim.fn.expand "%:p:h", hidden = true }
 end, { desc = "Search in Buffer Dir" })
 map("n", "<leader>sP", function()
   require("telescope.builtin").live_grep { cwd = "~/dev", hidden = true }
@@ -106,7 +106,7 @@ end, { desc = "Search in Config Files" })
 map("n", "<leader>sn", function()
   require("telescope.builtin").live_grep { cwd = "~/notes", hidden = true }
 end, { desc = "Search in Notes" })
-map("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "Search Grep" })
+map("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "Search Grep", hidden = true })
 
 -- Search
 map("n", '<leader>s"', require("telescope.builtin").registers, { desc = "Search Registers" })
