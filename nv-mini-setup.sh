@@ -53,7 +53,7 @@ vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, { desc = "Type Def
 vim.keymap.set("n", "<leader>ds", vim.lsp.buf.document_symbol, { desc = "Document Symbols" })
 vim.keymap.set('n', '<leader><space>', '<cmd>Pick buffers<cr>', {desc = 'Search open files'})
 vim.keymap.set('n', '<leader>ff', '<cmd>Pick files<cr>', {desc = 'Search all files'})
-vim.keymap.set('n', '<leader>fg', '<cmd>Pick grep_live<cr>', {desc = 'Search all files'})
+vim.keymap.set('n', '<leader>sg', '<cmd>Pick grep_live<cr>', {desc = 'Search all files'})
 vim.keymap.set('n', '<leader>fh', '<cmd>Pick help<cr>', {desc = 'Search help tags'})
 
 -- List of compatible language servers is here:
