@@ -26,7 +26,6 @@ vim.wo.relativenumber = true
 vim.o.mouse = "a"
 
 -- System Clipboard
--- mac os: 'unnamed', linux: 'unnamedplus'
 vim.o.clipboard = "unnamedplus"
 
 -- Enable break indent
