@@ -103,8 +103,10 @@ config.colors = {
 
 local act = wezterm.action
 
--- Workspace keybindings
+config.leader = { key = "q", mods = "CTRL", timeout_milliseconds = 2000 }
+
 config.keys = {
+	-- Workspace keybindings
 	{
 		key = "y",
 		mods = "CTRL|SHIFT",
@@ -144,12 +146,7 @@ config.keys = {
 			end),
 		}),
 	},
-}
-
--- -- Tmux like keybindings
-config.leader = { key = "q", mods = "CTRL", timeout_milliseconds = 2000 }
-
-config.keys = {
+	-- Tmux like keybindings
 	{
 		key = "\\",
 		mods = "LEADER",
