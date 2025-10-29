@@ -70,43 +70,41 @@ map(
 
 -- Find Files
 map("n", "<leader>fe", [[:NvimTreeToggle<CR>]], { desc = "File Explorer " })
-map("n", "<leader>ff", function()
-  require("telescope.builtin").find_files { hidden = true }
-end, { desc = "Find Files" })
+map("n", "<leader>ff", require("telescope.builtin").find_files, { desc = "Find Files" })
 map("n", "<leader>fb", require("telescope.builtin").buffers, { desc = "Find Buffers" })
 map("n", "<leader>fg", require("telescope.builtin").git_files, { desc = "Find Git Files" })
 map("n", "<leader>fr", require("telescope.builtin").oldfiles, { desc = "Find Recent Files" })
 map("n", "<leader>fP", function()
-  require("telescope.builtin").find_files { cwd = "~/dev", hidden = true }
+  require("telescope.builtin").find_files { cwd = "~/dev" }
 end, { desc = "Find Projects" })
 map("n", "<leader>fn", function()
-  require("telescope.builtin").find_files { cwd = "~/notes", hidden = true }
+  require("telescope.builtin").find_files { cwd = "~/notes" }
 end, { desc = "Find Notes" })
 vim.keymap.set("n", "<leader>fs", function()
-  require("telescope.builtin").find_files { cwd = "~/temp/scripts", hidden = true }
+  require("telescope.builtin").find_files { cwd = "~/temp/scripts" }
 end, { desc = "Find Scripts" })
 map("n", "<leader>fc", function()
-  require("telescope.builtin").find_files { cwd = "~/dotfiles", hidden = true }
+  require("telescope.builtin").find_files { cwd = "~/dotfiles" }
 end, { desc = "Find Config File" })
 map("n", "<leader>f.", function()
-  require("telescope.builtin").find_files { cwd = vim.fn.expand "%:p:h", hidden = true }
+  require("telescope.builtin").find_files { cwd = vim.fn.expand "%:p:h" }
 end, { desc = "Find Files in Buffer Dir" })
 
 -- Grep
 map("n", "<leader>/", require("telescope.builtin").current_buffer_fuzzy_find, { desc = "Search Buffer" })
 map("n", "<leader>s.", function()
-  require("telescope.builtin").live_grep { cwd = vim.fn.expand "%:p:h", hidden = true }
+  require("telescope.builtin").live_grep { cwd = vim.fn.expand "%:p:h" }
 end, { desc = "Search in Buffer Dir" })
 map("n", "<leader>sP", function()
-  require("telescope.builtin").live_grep { cwd = "~/dev", hidden = true }
+  require("telescope.builtin").live_grep { cwd = "~/dev" }
 end, { desc = "Search in Projects" })
 map("n", "<leader>sc", function()
-  require("telescope.builtin").live_grep { cwd = "~/dotfiles", hidden = true }
+  require("telescope.builtin").live_grep { cwd = "~/dotfiles" }
 end, { desc = "Search in Config Files" })
 map("n", "<leader>sn", function()
-  require("telescope.builtin").live_grep { cwd = "~/notes", hidden = true }
+  require("telescope.builtin").live_grep { cwd = "~/notes" }
 end, { desc = "Search in Notes" })
-map("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "Search Grep", hidden = true })
+map("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "Search Grep" })
 
 -- Search
 map("n", '<leader>s"', require("telescope.builtin").registers, { desc = "Search Registers" })
