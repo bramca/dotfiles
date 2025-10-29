@@ -1,3 +1,3 @@
 return {
-    "nvchad/volt"
+  "nvchad/volt",
 }

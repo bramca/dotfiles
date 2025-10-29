@@ -1,9 +1,9 @@
 return {
-    "rcarriga/nvim-dap-ui",
-    lazy = false,
-    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
-    config = function()
-        local dapui = require("dapui")
-        dapui.setup()
-    end
+  "rcarriga/nvim-dap-ui",
+  lazy = false,
+  dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+  config = function()
+    local dapui = require "dapui"
+    dapui.setup()
+  end,
 }

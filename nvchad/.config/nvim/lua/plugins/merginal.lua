@@ -1,8 +1,6 @@
 -- Git
-local M = {
+return {
   "idanarye/vim-merginal",
   lazy = false,
-  dependencies = { "tpope/vim-fugitive" }
+  dependencies = { "tpope/vim-fugitive" },
 }
-
-return M

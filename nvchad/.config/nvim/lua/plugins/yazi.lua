@@ -1,4 +1,4 @@
 return {
-    "mikavilpas/yazi.nvim",
-    event = "VeryLazy",
+  "mikavilpas/yazi.nvim",
+  event = "VeryLazy",
 }

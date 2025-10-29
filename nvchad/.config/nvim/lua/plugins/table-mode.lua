@@ -1,4 +1,4 @@
 return {
-    "dhruvasagar/vim-table-mode",
-    lazy = false,
+  "dhruvasagar/vim-table-mode",
+  lazy = false,
 }
