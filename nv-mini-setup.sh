@@ -2,6 +2,8 @@
 
 go install golang.org/x/tools/gopls@latest
 rustup component add rust-analyzer
+sudo npm install -g pyright
+sudo npm install -g typescript-language-server typescript
 
 nvim --headless -c 'exe "write ++p" stdpath("config") . "/init.lua"' -c 'quit'
 nvim --headless -c 'echo $MYVIMRC' -c 'quit'
@@ -21,27 +23,44 @@ vim.o.smartcase = true
 vim.o.ignorecase = true
 vim.o.wrap = true
 vim.o.hlsearch = false
-vim.o.signcolumn = 'yes'
+vim.o.signcolumn = "yes"
 vim.o.autochdir = true
 vim.o.clipboard = "unnamedplus"
 
--- Colorscheme
-vim.cmd.colorscheme('retrobox')
-
 -- Mini setup
-require('mini.icons').setup({})
-require('mini.pairs').setup({})
-require('mini.statusline').setup({})
-require('mini.indentscope').setup({})
-require('mini.trailspace').setup({})
-require('mini.starter').setup({})
-require('mini.snippets').setup({})
-require('mini.completion').setup({})
-require('mini.files').setup({})
-require('mini.pick').setup({})
+require("mini.base16").setup({
+	palette = {
+		base00 = "#192330",
+		base01 = "#212e3f",
+		base02 = "#29394f",
+		base03 = "#575860",
+		base04 = "#71839b",
+		base05 = "#cdcecf",
+		base06 = "#aeafb0",
+		base07 = "#e4e4e5",
+		base08 = "#c94f6d",
+		base09 = "#f4a261",
+		base0A = "#dbc074",
+		base0B = "#81b29a",
+		base0C = "#63cdcf",
+		base0D = "#719cd6",
+		base0E = "#9d79d6",
+		base0F = "#d67ad2",
+	}
+})
+require("mini.icons").setup({})
+require("mini.pairs").setup({})
+require("mini.statusline").setup({})
+require("mini.indentscope").setup({})
+require("mini.trailspace").setup({})
+require("mini.starter").setup({})
+require("mini.snippets").setup({})
+require("mini.completion").setup({})
+require("mini.files").setup({})
+require("mini.pick").setup({})
 
 -- Space as the leader key
-vim.g.mapleader = vim.keycode('<Space>')
+vim.g.mapleader = vim.keycode("<Space>")
 
 -- Keymaps
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename" })
@@ -51,12 +70,13 @@ vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Goto References" })
 vim.keymap.set("n", "gI", vim.lsp.buf.implementation, { desc = "Goto Implementation" })
 vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, { desc = "Type Definition" })
 vim.keymap.set("n", "<leader>ds", vim.lsp.buf.document_symbol, { desc = "Document Symbols" })
-vim.keymap.set('n', '<leader><space>', '<cmd>Pick buffers<cr>', {desc = 'Search open files'})
-vim.keymap.set('n', '<leader>ff', '<cmd>Pick files<cr>', {desc = 'Search all files'})
-vim.keymap.set('n', '<leader>sg', '<cmd>Pick grep_live<cr>', {desc = 'Search all files'})
-vim.keymap.set('n', '<leader>fh', '<cmd>Pick help<cr>', {desc = 'Search help tags'})
+vim.keymap.set("n", "<leader>fb", "<cmd>Pick buffers<cr>", { desc = "Search open files" })
+vim.keymap.set("n", "<leader>ff", "<cmd>Pick files<cr>", { desc = "Search all files" })
+vim.keymap.set("n", "<leader>fe", "<cmd>lua MiniFiles.open()<cr>", { desc="File explorer" })
+vim.keymap.set("n", "<leader>sg", "<cmd>Pick grep_live<cr>", { desc = "Search all files" })
+vim.keymap.set("n", "<leader>fh", "<cmd>Pick help<cr>", { desc = "Search help tags" })
 
 -- List of compatible language servers is here:
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
-vim.lsp.enable({'gopls', 'rust_analyzer'})
+vim.lsp.enable({ "gopls", "rust_analyzer", "pyright", "ts_ls" })
 EOF
