@@ -1,0 +1,11 @@
+[scrolling]
+history = 20000
+
+[font]
+normal = { family = "FiraCode Nerd Font", style = "Regular"}
+size = 8.0
+
+[window]
+decorations = "None"
+opacity = 0.85
+startup_mode = "Fullscreen"

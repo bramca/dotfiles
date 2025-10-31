@@ -6,9 +6,7 @@ sudo npm install -g pyright
 sudo npm install -g typescript-language-server typescript
 
 nvim --headless -c 'exe "write ++p" stdpath("config") . "/init.lua"' -c 'quit'
-nvim --headless -c 'echo $MYVIMRC' -c 'quit'
 nvim --headless -c 'call mkdir(stdpath("config") . "/pack/vendor/start/", "p")' -c 'quit'
-nvim --headless -c 'echo stdpath("config") . "/pack/vendor/start/"' -c 'quit'
 cd ~/.config/nvim/pack/vendor/start
 git clone https://github.com/neovim/nvim-lspconfig
 git clone --filter=blob:none https://github.com/nvim-mini/mini.nvim
@@ -26,6 +24,8 @@ vim.o.hlsearch = false
 vim.o.signcolumn = "yes"
 vim.o.autochdir = true
 vim.o.clipboard = "unnamedplus"
+vim.o.splitright = true
+vim.o.splitbelow = true
 
 -- Mini setup
 require("mini.base16").setup({
@@ -49,6 +49,7 @@ require("mini.base16").setup({
 	}
 })
 require("mini.icons").setup({})
+require("mini.surround").setup({})
 require("mini.pairs").setup({})
 require("mini.statusline").setup({})
 require("mini.indentscope").setup({})
@@ -78,6 +79,25 @@ vim.keymap.set("n", "<leader>ff", "<cmd>Pick files<cr>", { desc = "Search all fi
 vim.keymap.set("n", "<leader>fe", "<cmd>lua MiniFiles.open()<cr>", { desc="File explorer" })
 vim.keymap.set("n", "<leader>sg", "<cmd>Pick grep_live<cr>", { desc = "Search all files" })
 vim.keymap.set("n", "<leader>fh", "<cmd>Pick help<cr>", { desc = "Search help tags" })
+
+vim.keymap.set("n", "<leader>bl", [[:b#<CR>]], { desc = "Previous Buffer" })
+vim.keymap.set("n", "<leader>bh", [[:bn<CR>]], { desc = "Next Buffer" })
+
+vim.keymap.set("n", "<leader>tv", [[:vsplit | term<CR>]], { desc = "Terminal in Vertical Split" })
+vim.keymap.set("n", "<leader>tx", [[:split | term<CR>]], { desc = "Terminal in Horizontal Split" })
+vim.keymap.set("n", "<leader>tt", [[:tabnew | term<CR>]], { desc = "Terminal in New Tab" })
+
+vim.keymap.set("n", "<leader>lg", [[:tabnew | term lazygit<CR>]], { desc = "Lazy Git" })
+
+-- Autocmds
+vim.api.nvim_create_autocmd({ "TermOpen", "BufEnter" }, {
+    pattern = { "*" },
+    callback = function()
+        if vim.opt.buftype:get() == "terminal" then
+            vim.cmd(":startinsert")
+        end
+    end
+})
 
 -- List of compatible language servers is here:
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
