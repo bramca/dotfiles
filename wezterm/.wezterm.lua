@@ -4,6 +4,17 @@ local wezterm = require("wezterm")
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
+-- Colorscheme
+config.color_scheme = "nightfox"
+config.colors = {
+	background = "#0c1116",
+	cursor_bg = "#659eda",
+	cursor_border = "#659eda",
+	tab_bar = {
+		background = "#0c1116",
+	},
+}
+
 -- Tabline config
 local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 
@@ -75,31 +86,6 @@ config.window_background_opacity = 0.85
 
 -- enable for blurring background when transparency is enabled
 -- config.macos_window_background_blur = 10
-
-config.colors = {
-	-- Specifies the border color of the cursor when the cursor style is set to Block,
-	-- or the color of the vertical or horizontal bar when the cursor style is set to
-	-- Bar or Underline.
-	foreground = "#cdcecf",
-	background = "#0c1116",
-	-- Overrides the cell background color when the current cell is occupied by the
-	-- cursor and the cursor style is set to Block
-	cursor_bg = "#659eda",
-	cursor_border = "#659eda",
-	-- Overrides the text color when the current cell is occupied by the cursor
-	cursor_fg = "#0c1116",
-	compose_cursor = "#f4a261",
-	selection_bg = "#2b3b51",
-	selection_fg = "#cdcecf",
-	scrollbar_thumb = "#71839b",
-	split = "#131a24",
-	visual_bell = "#cdcecf",
-	ansi = { "#393b44", "#c94f6d", "#81b29a", "#dbc074", "#719cd6", "#9d79d6", "#63cdcf", "#dfdfe0" },
-	brights = { "#575860", "#d16983", "#8ebaa4", "#e0c989", "#86abdc", "#baa1e2", "#7ad5d6", "#e4e4e5" },
-	tab_bar = {
-		background = "#0c1116",
-	},
-}
 
 local act = wezterm.action
 
