@@ -145,8 +145,6 @@ map("n", "gI", vim.lsp.buf.implementation, { desc = "Goto Implementation" })
 map("n", "<leader>D", vim.lsp.buf.type_definition, { desc = "Type Definition" })
 map("n", "<leader>ds", require("telescope.builtin").lsp_document_symbols, { desc = "Document Symbols" })
 map("n", "<leader>ws", require("telescope.builtin").lsp_workspace_symbols, { desc = "Workspace Symbols" })
-map("n", "<leader>lx", require("garbage-day.utils").stop_lsp, { desc = "Stop LSP Clients" })
-map("n", "<leader>ls", require("garbage-day.utils").start_lsp, { desc = "Start LSP Clients" })
 
 -- See `:help K` for why this keymap
 map("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
