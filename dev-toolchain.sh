@@ -53,18 +53,6 @@ curl -o $tempfile https://raw.githubusercontent.com/wezterm/wezterm/main/termwiz
 tic -x -o ~/.terminfo $tempfile
 rm $tempfile
 
-# dotfiles
-git clone git@github.com:bramca/dotfiles.git
-cd dotfiles
-stow wezterm
-stow nvim
-stow tmux
-stow yazi
-
-# git config
-git config --global user.name "bramca"
-git config --global user.email "bramcautaerts@gmail.com"
-
 # write to .shellrc file
 # export GOPATH=~/go
 # export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
