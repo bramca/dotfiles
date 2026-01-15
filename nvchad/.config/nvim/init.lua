@@ -44,13 +44,40 @@ require("telescope").setup {
   },
   pickers = {
     find_files = {
+      theme = "ivy",
       hidden = true,
     },
     grep_string = {
+      theme = "ivy",
       additional_args = { "--hidden" },
     },
     live_grep = {
+      theme = "ivy",
       additional_args = { "--hidden" },
+    },
+    lsp_document_symbols = {
+      theme = "ivy",
+    },
+    lsp_workspace_symbols = {
+      theme = "ivy",
+    },
+    lsp_references = {
+      theme = "ivy",
+    },
+    buffers = {
+      theme = "ivy",
+    },
+    oldfiles = {
+      theme = "ivy",
+    },
+    git_files = {
+      theme = "ivy",
+    },
+    current_buffer_fuzzy_find = {
+      theme = "ivy",
+    },
+    diagnostics = {
+      theme = "ivy",
     },
   },
 }

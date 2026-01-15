@@ -5,7 +5,7 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 -- Colorscheme
-config.color_scheme = "nightfox"
+config.color_scheme = "Material Darker (base16)"
 config.colors = {
 	background = "#0c1116",
 	cursor_bg = "#659eda",
@@ -21,7 +21,7 @@ local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabl
 tabline.setup({
 	options = {
 		icons_enabled = true,
-		theme = "nightfox",
+		theme = "Material Darker (base16)",
 		tabs_enabled = true,
 		theme_overrides = {
 			tab = {
@@ -74,7 +74,7 @@ tabline.setup({
 config.term = "wezterm"
 
 config.font = wezterm.font("JetBrains Mono")
-config.font_size = 14
+config.font_size = 12
 
 config.enable_tab_bar = true
 config.use_fancy_tab_bar = false

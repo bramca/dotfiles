@@ -6,7 +6,7 @@
 local M = {}
 
 M.base46 = {
-  theme = "nightfox",
+  theme = "material-deep-ocean",
   transparency = false,
   hl_override = {
     Comment = { italic = true },
@@ -14,7 +14,7 @@ M.base46 = {
     Keyword = { bold = true },
     Type = { bold = true, italic = true },
   },
-  theme_toggle = { "nightfox", "one_light" },
+  theme_toggle = { "material-deep-ocean", "one_light" },
 }
 
 M.ui = {
