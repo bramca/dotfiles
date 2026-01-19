@@ -74,7 +74,7 @@ tabline.setup({
 config.term = "wezterm"
 
 config.font = wezterm.font("JetBrains Mono")
-config.font_size = 12
+config.font_size = 14
 
 config.enable_tab_bar = true
 config.use_fancy_tab_bar = false
