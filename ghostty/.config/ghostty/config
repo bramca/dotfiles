@@ -1,6 +1,7 @@
 shell-integration-features = no-cursor
 cursor-style-blink = false
 cursor-style = block
+cursor-color = white
 window-decoration = none
 maximize = true
 background = black
