@@ -7,3 +7,4 @@ background = black
 background-opacity = 0.85
 macos-option-as-alt = true
 font-size = 14
+theme = ayu
