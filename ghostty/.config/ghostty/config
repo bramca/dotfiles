@@ -1,0 +1,9 @@
+shell-integration-features = no-cursor
+cursor-style-blink = false
+cursor-style = block
+window-decoration = none
+maximize = true
+background = black
+background-opacity = 0.85
+macos-option-as-alt = true
+font-size = 14
