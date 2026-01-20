@@ -1,7 +1,8 @@
+font-family = "JetBrains Mono"
 shell-integration-features = no-cursor
 cursor-style-blink = false
 cursor-style = block
-cursor-color = white
+cursor-color = #659eda
 window-decoration = none
 maximize = true
 background = black

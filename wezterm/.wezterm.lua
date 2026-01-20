@@ -7,11 +7,11 @@ local config = wezterm.config_builder()
 -- Colorscheme
 config.color_scheme = "Material Darker (base16)"
 config.colors = {
-	background = "#0c1116",
+	background = "black",
 	cursor_bg = "#659eda",
 	cursor_border = "#659eda",
 	tab_bar = {
-		background = "#0c1116",
+		background = "black",
 	},
 }
 
@@ -20,7 +20,7 @@ local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabl
 
 tabline.setup({
 	options = {
-		icons_enabled = true,
+		icons_enabled = false,
 		theme = "Material Darker (base16)",
 		tabs_enabled = true,
 		theme_overrides = {
@@ -29,16 +29,16 @@ tabline.setup({
 			},
 		},
 		section_separators = {
-			left = "",
-			right = "",
+			left = "",
+			right = "",
 		},
 		component_separators = {
-			left = wezterm.nerdfonts.pl_left_soft_divider,
-			right = wezterm.nerdfonts.pl_right_soft_divider,
+			left = "|",
+			right = "|",
 		},
 		tab_separators = {
-			left = "",
-			right = "",
+			left = "",
+			right = "",
 		},
 	},
 	sections = {
@@ -78,8 +78,11 @@ config.font_size = 14
 
 config.enable_tab_bar = true
 config.use_fancy_tab_bar = false
+config.tab_bar_at_bottom = true
 
 config.window_decorations = "RESIZE"
+
+config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
 
 -- enable window transparency
 config.window_background_opacity = 0.85
