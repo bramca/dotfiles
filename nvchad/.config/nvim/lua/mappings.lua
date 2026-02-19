@@ -37,9 +37,6 @@ map("n", "<leader>k", [[:nohl<CR>]], { desc = "No Highlight" })
 map("n", "<leader>L", [[:Lazy<CR>]], { desc = "Lazy Plugins" })
 map("n", "<leader>M", [[:Mason<CR>]], { desc = "Mason" })
 
--- REST Client
-map("n", "<C-c><C-c>", [[:Rest run<CR>]], { noremap = true })
-
 -- Testing
 map("n", "<leader>ts", [[:TestNearest<CR>]], { desc = "Test Nearest" })
 map("n", "<leader>td", [[:lua require("dap-go").debug_test()<CR>]], { desc = "Test Debug" })
