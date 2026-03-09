@@ -1,63 +1,88 @@
 #!/bin/bash
 
-# install packages
-sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-sudo curl -fsSLo /etc/apt/sources.list.d/brave-browser-release.sources https://brave-browser-apt-release.s3.brave.com/brave-browser.sources
-curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
-echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
-sudo chmod 644 /usr/share/keyrings/wezterm-fury.gpg
-sudo apt update
-sudo apt install brave-browser stow tmux fd-find btop ripgrep fzf lua5.4 lua5.1 liblua5.4-dev liblua5.1-dev cargo npm wezterm tldr 7zip imagemagick
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    # install packages
+    sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+    sudo curl -fsSLo /etc/apt/sources.list.d/brave-browser-release.sources https://brave-browser-apt-release.s3.brave.com/brave-browser.sources
+    curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
+    echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
+    sudo chmod 644 /usr/share/keyrings/wezterm-fury.gpg
+    sudo apt update
+    sudo apt install brave-browser stow tmux fd-find btop ripgrep fzf lua5.4 lua5.1 liblua5.4-dev liblua5.1-dev cargo npm wezterm tldr 7zip imagemagick
 
-# install oh-my-bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+    # install oh-my-bash
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
 
-# install go
-wget https://go.dev/dl/go1.25.2.linux-amd64.tar.gz
-sudo tar -C /usr/local -xzf go1.25.2.linux-amd64.tar.gz
-export PATH=$PATH:/usr/local/go/bin
+    # install go
+    wget https://go.dev/dl/go1.25.2.linux-amd64.tar.gz
+    sudo tar -C /usr/local -xzf go1.25.2.linux-amd64.tar.gz
+    export PATH=$PATH:/usr/local/go/bin
 
-# install rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    # install rust
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-# install tree-sitter
-cargo install --locked tree-sitter-cli
+    # install tree-sitter
+    cargo install --locked tree-sitter-cli
 
-# install lazygit
-go install github.com/jesseduffield/lazygit@latest
+    # install lazygit
+    go install github.com/jesseduffield/lazygit@latest
 
-# install go debugger
-go install github.com/go-delve/delve/cmd/dlv@latest
+    # install go debugger
+    go install github.com/go-delve/delve/cmd/dlv@latest
 
-# install formatters
-go install golang.org/x/tools/cmd/goimports@latest
-sudo npm install -g prettier
-cargo install stylua
+    # install formatters
+    go install golang.org/x/tools/cmd/goimports@latest
+    sudo npm install -g prettier
+    cargo install stylua
 
-# install yazi
-git clone https://github.com/sxyazi/yazi.git
-cd yazi
-cargo build --release --locked
-sudo mv target/release/ya target/release/yazi /usr/local/bin
-cd -
+    # install yazi
+    git clone https://github.com/sxyazi/yazi.git
+    cd yazi
+    cargo build --release --locked
+    sudo mv target/release/ya target/release/yazi /usr/local/bin
+    cd -
 
-# install neovim
-wget https://github.com/neovim/neovim/releases/download/nightly/nvim-linux-x86_64.appimage
-chmod u+x nvim-linux-x86_64.appimage
-mv nvim-linux-x86_64.appimage nvim
-sudo mv nvim /usr/local/bin/
+    # install neovim
+    wget https://github.com/neovim/neovim/releases/download/nightly/nvim-linux-x86_64.appimage
+    chmod u+x nvim-linux-x86_64.appimage
+    mv nvim-linux-x86_64.appimage nvim
+    sudo mv nvim /usr/local/bin/
 
-# for tmux colors
-tempfile=$(mktemp)
-curl -o $tempfile https://raw.githubusercontent.com/wezterm/wezterm/main/termwiz/data/wezterm.terminfo
-tic -x -o ~/.terminfo $tempfile
-rm $tempfile
+    # for tmux colors
+    tempfile=$(mktemp)
+    curl -o $tempfile https://raw.githubusercontent.com/wezterm/wezterm/main/termwiz/data/wezterm.terminfo
+    tic -x -o ~/.terminfo $tempfile
+    rm $tempfile
+fi
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    # install oh-my-zsh
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+    # install homebrew
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+    brew install git
+    brew install stow
+    brew install tmux
+    brew install nvim
+    brew install fzf
+    brew install fd
+    brew install lazygit
+    brew install lazysql
+    brew install ripgrep
+    brew install yazi
+    brew install delve
+    brew install btop
+    brew install lynx
+    brew install node
+fi
 
 # write to .shellrc file
-# export GOPATH=~/go
+# export GOPATH=$HOME/go
 # export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 # alias tms="~/.config/tmux/scripts/tmux-sessionizer"
 # alias lg="lazygit"
 # alias n="nvim"
 # alias nh="nvim ."
-# alias nf="find . | fzf | xargs nvim"
+# alias nf="fzf | xargs nvim"

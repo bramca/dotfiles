@@ -1,5 +1,5 @@
 return {
-  "klen/nvim-test",
+  "bramca/nvim-test",
   lazy = false,
   config = function()
     require("nvim-test").setup()
