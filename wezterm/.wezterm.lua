@@ -4,6 +4,9 @@ local wezterm = require("wezterm")
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
+-- For ease of use
+local act = wezterm.action
+
 -- Colorscheme
 config.color_scheme = "Material Darker (base16)"
 config.colors = {
@@ -14,6 +17,9 @@ config.colors = {
 		background = "black",
 	},
 }
+
+-- History
+config.scrollback_lines = 10000
 
 -- Tabline config
 local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
@@ -60,6 +66,52 @@ tabline.setup({
 	extensions = {},
 })
 
+-- Sessionizer
+local sessionizer = function(window, pane)
+	local projects = {}
+
+	local success, stdout, stderr = wezterm.run_child_process({
+		"find",
+		wezterm.home_dir .. "/dev",
+		wezterm.home_dir .. "/temp",
+		"-type",
+		"d",
+		"-mindepth",
+		"1",
+		"-maxdepth",
+		"1",
+	})
+
+	if not success then
+		wezterm.log_error("Failed to run find: " .. stderr)
+		return
+	end
+
+	for line in stdout:gmatch("([^\n]*)\n?") do
+		local project = line:gsub("/.git.*$", "")
+		local label = project
+		local id = project:gsub(".*/", "")
+		table.insert(projects, { label = tostring(label), id = tostring(id) })
+	end
+
+	window:perform_action(
+		act.InputSelector({
+			action = wezterm.action_callback(function(win, _, id, label)
+				if not id and not label then
+					wezterm.log_info("Cancelled")
+				else
+					wezterm.log_info("Selected " .. label)
+					win:perform_action(act.SwitchToWorkspace({ name = id, spawn = { cwd = label } }), pane)
+				end
+			end),
+			fuzzy = true,
+			title = "Select project",
+			choices = projects,
+		}),
+		pane
+	)
+end
+
 -- Start fullscreen
 -- local mux = wezterm.mux
 
@@ -89,8 +141,6 @@ config.window_background_opacity = 0.85
 
 -- enable for blurring background when transparency is enabled
 -- config.macos_window_background_blur = 10
-
-local act = wezterm.action
 
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 2000 }
 
@@ -191,7 +241,11 @@ config.keys = {
 		mods = "LEADER",
 		action = act.TogglePaneZoomState,
 	},
-	{ key = "[", mods = "LEADER", action = act.ActivateCopyMode },
+	{
+		key = "[",
+		mods = "LEADER",
+		action = act.ActivateCopyMode,
+	},
 	{
 		key = "c",
 		mods = "LEADER",
@@ -212,6 +266,62 @@ config.keys = {
 		key = "/",
 		mods = "LEADER",
 		action = act.Search("CurrentSelectionOrEmptyString"),
+	},
+	{
+		key = "x",
+		mods = "LEADER",
+		action = wezterm.action_callback(sessionizer),
+	},
+	{
+		key = "u",
+		mods = "LEADER",
+		action = wezterm.action_callback(function(window, pane)
+			local firsttab = window:mux_window():tabs()[1]
+			local firstpane = firsttab:panes()[1]:pane_id()
+			local checkcmds = { "/usr/bin/wezterm", "/opt/homebrew/bin/wezterm" }
+			local weztermcmd = ""
+			for _, cmd in pairs(checkcmds) do
+				if io.open(cmd) ~= nil then
+					weztermcmd = cmd
+					break
+				end
+			end
+
+			if weztermcmd == "" then
+				wezterm.log_error("Cannot find wezterm command")
+				return
+			end
+			local success, _, stderr = wezterm.run_child_process({
+				weztermcmd,
+				"cli",
+				"split-pane",
+				"--right",
+				"--pane-id",
+				firstpane,
+				"--move-pane-id",
+				pane:pane_id(),
+			})
+
+			if not success then
+				wezterm.log_error("Failed to run wezterm cli: " .. stderr)
+				return
+			end
+
+			firsttab:activate()
+		end),
+	},
+	{
+		key = "o",
+		mods = "LEADER",
+		action = wezterm.action_callback(function(_, pane)
+			pane:move_to_new_tab()
+			pane:activate()
+		end),
+	},
+	{
+		key = "a",
+		mods = "LEADER",
+		action = act.SendKey({ mods = "CTRL", key = "a" }),
 	},
 }
 
