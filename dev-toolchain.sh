@@ -70,6 +70,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     brew install fd
     brew install lazygit
     brew install lazysql
+    brew install tree-sitter-cli
     brew install ripgrep
     brew install yazi
     brew install delve
