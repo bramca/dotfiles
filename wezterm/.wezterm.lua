@@ -21,6 +21,26 @@ config.colors = {
 -- History
 config.scrollback_lines = 10000
 
+-- Window and font configurations
+config.term = "wezterm"
+
+config.font = wezterm.font("JetBrains Mono")
+config.font_size = 14
+
+config.enable_tab_bar = true
+config.use_fancy_tab_bar = false
+config.tab_bar_at_bottom = true
+
+config.window_decorations = "RESIZE"
+
+config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
+
+-- enable window transparency
+config.window_background_opacity = 0.85
+
+-- enable for blurring background when transparency is enabled
+-- config.macos_window_background_blur = 10
+
 -- Tabline config
 local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 
@@ -120,27 +140,6 @@ end
 --   local gui_window = window:gui_window();
 --   gui_window:maximize()
 -- end)
-
--- This is where you actually apply your config choices
-
-config.term = "wezterm"
-
-config.font = wezterm.font("JetBrains Mono")
-config.font_size = 14
-
-config.enable_tab_bar = true
-config.use_fancy_tab_bar = false
-config.tab_bar_at_bottom = true
-
-config.window_decorations = "RESIZE"
-
-config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
-
--- enable window transparency
-config.window_background_opacity = 0.85
-
--- enable for blurring background when transparency is enabled
--- config.macos_window_background_blur = 10
 
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 2000 }
 
