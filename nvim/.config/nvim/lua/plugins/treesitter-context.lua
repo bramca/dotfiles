@@ -1,8 +1,6 @@
 -- Additional text objects via treesitter
-local M = {
-  'nvim-treesitter/nvim-treesitter-context',
+return {
+  "nvim-treesitter/nvim-treesitter-context",
   lazy = false,
-  dependencies = { 'nvim-treesitter' },
+  dependencies = { "nvim-treesitter" },
 }
-
-return M
