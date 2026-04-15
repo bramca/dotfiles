@@ -44,8 +44,8 @@ vim.o.termguicolors = true
 vim.o.completeopt = 'menuone,noselect'
 
 -- DAP breakpoint icon
-vim.fn.sign_define("DapBreakpoint",{ text = "®", texthl = "", linehl = "", numhl = ""})
-vim.fn.sign_define("DapStopped",{ text = "»", texthl = "", linehl = "", numhl = ""})
+vim.fn.sign_define("DapBreakpoint",{ text = "🛑", texthl = "", linehl = "", numhl = ""})
+vim.fn.sign_define("DapStopped",{ text = "󰓗", texthl = "", linehl = "", numhl = ""})
 
 -- UUID gen
 vim.api.nvim_create_user_command('Uuid', function ()

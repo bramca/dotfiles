@@ -1,11 +1,7 @@
--- Org mode
-local M = {
-  'nvim-orgmode/orgmode',
+return {
+  "nvim-orgmode/orgmode",
+  lazy = false,
+  config = function()
+    require("orgmode").setup {}
+  end,
 }
-
-function M.config()
-  -- Load treesitter grammar for org
-  require('orgmode').setup{}
-end
-
-return M

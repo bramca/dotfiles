@@ -1,0 +1,12 @@
+[scrolling]
+history = 20000
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular"}
+size = 14.0
+
+[window]
+decorations = "None"
+opacity = 0.85
+startup_mode = "Maximized"
+option_as_alt = "Both"

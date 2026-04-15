@@ -1,37 +1,93 @@
-require "opts"
-require "launch"
+vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-spec("plugins.snacks")
-spec("plugins.autopairs")
-spec("plugins.bufferline")
-spec("plugins.colorizer")
-spec("plugins.colorscheme")
-spec("plugins.floaterm")
-spec("plugins.gitsigns")
-spec("plugins.lsp-config")
-spec("plugins.lualine")
-spec("plugins.markdown-preview")
-spec("plugins.mason")
-spec("plugins.merginal")
-spec("plugins.nvim-cmp")
-spec("plugins.nvim-dap-go")
-spec("plugins.nvim-dap")
-spec("plugins.nvim-dap-ui")
-spec("plugins.nvim-test")
-spec("plugins.orgmode")
-spec("plugins.rainbow-csv")
-spec("plugins.rest-nvim")
-spec("plugins.todo-comments")
-spec("plugins.treesitter")
-spec("plugins.treesitter-textojbects")
-spec("plugins.treesitter-context")
-spec("plugins.trouble")
-spec("plugins.vim-rooter")
-spec("plugins.vim-sleuth")
-spec("plugins.vim-table-mode")
-spec("plugins.which-key")
-spec("plugins.yazi")
-spec("plugins.harpoon")
+-- bootstrap lazy and all plugins
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
-require "plugins.lazy"
-require "keymaps"
+if not vim.uv.fs_stat(lazypath) then
+  local repo = "https://github.com/folke/lazy.nvim.git"
+  vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath }
+end
+
+vim.opt.rtp:prepend(lazypath)
+
+local lazy_config = require "configs.lazy"
+
+-- load plugins
+require("lazy").setup({
+  {
+    "NvChad/NvChad",
+    lazy = false,
+    branch = "v2.5",
+    import = "nvchad.plugins",
+  },
+
+  { import = "plugins" },
+}, lazy_config)
+
+-- load theme
+for _, v in ipairs(vim.fn.readdir(vim.g.base46_cache)) do
+  dofile(vim.g.base46_cache .. v)
+end
+
+require "options"
+require "autocmds"
+
+require("telescope").setup {
+  defaults = {
+    file_ignore_patterns = {
+      "node_modules",
+      ".git",
+      "venv",
+    },
+  },
+  pickers = {
+    find_files = {
+      theme = "ivy",
+      hidden = true,
+    },
+    grep_string = {
+      theme = "ivy",
+      additional_args = { "--hidden" },
+    },
+    live_grep = {
+      theme = "ivy",
+      additional_args = { "--hidden" },
+    },
+    lsp_document_symbols = {
+      theme = "ivy",
+    },
+    lsp_workspace_symbols = {
+      theme = "ivy",
+    },
+    lsp_references = {
+      theme = "ivy",
+    },
+    buffers = {
+      theme = "ivy",
+    },
+    oldfiles = {
+      theme = "ivy",
+    },
+    git_files = {
+      theme = "ivy",
+    },
+    current_buffer_fuzzy_find = {
+      theme = "ivy",
+    },
+    diagnostics = {
+      theme = "ivy",
+    },
+  },
+}
+
+require("nvim-tree").setup {
+  git = {
+    enable = false,
+  },
+}
+
+vim.schedule(function()
+  require "mappings"
+end)

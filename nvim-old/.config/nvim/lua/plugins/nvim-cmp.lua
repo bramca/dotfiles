@@ -39,9 +39,8 @@ function M.opts()
       { name = "nvim_lsp_signature_help" },
       { name = "nvim_lsp" },
       { name = "path" },
-    }, {
-        { name = "buffer" },
-      }),
+      { name = "buffer" },
+    }),
     formatting = {
       format = function(entry, item)
         local widths = {

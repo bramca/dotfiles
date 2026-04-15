@@ -1,0 +1,105 @@
+#!/bin/bash
+
+go install golang.org/x/tools/gopls@latest
+rustup component add rust-analyzer
+sudo npm install -g pyright
+sudo npm install -g typescript-language-server typescript
+
+nvim --headless -c 'exe "write ++p" stdpath("config") . "/init.lua"' -c 'quit'
+nvim --headless -c 'call mkdir(stdpath("config") . "/pack/vendor/start/", "p")' -c 'quit'
+cd ~/.config/nvim/pack/vendor/start
+git clone https://github.com/neovim/nvim-lspconfig
+git clone --filter=blob:none https://github.com/nvim-mini/mini.nvim
+nvim --headless -c 'helptags ALL' -c 'quit'
+cat > ~/.config/nvim/init.lua << EOF
+-- Options
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.smartcase = true
+vim.o.ignorecase = true
+vim.o.wrap = true
+vim.o.hlsearch = false
+vim.o.signcolumn = "yes"
+vim.o.autochdir = true
+vim.o.clipboard = "unnamedplus"
+vim.o.splitright = true
+vim.o.splitbelow = true
+
+-- Mini setup
+require("mini.base16").setup({
+	palette = {
+		base00 = "#192330",
+		base01 = "#212e3f",
+		base02 = "#29394f",
+		base03 = "#575860",
+		base04 = "#71839b",
+		base05 = "#cdcecf",
+		base06 = "#aeafb0",
+		base07 = "#e4e4e5",
+		base08 = "#c94f6d",
+		base09 = "#f4a261",
+		base0A = "#dbc074",
+		base0B = "#81b29a",
+		base0C = "#63cdcf",
+		base0D = "#719cd6",
+		base0E = "#9d79d6",
+		base0F = "#d67ad2",
+	}
+})
+require("mini.icons").setup({})
+require("mini.surround").setup({})
+require("mini.pairs").setup({})
+require("mini.statusline").setup({})
+require("mini.indentscope").setup({})
+require("mini.trailspace").setup({})
+require("mini.starter").setup({})
+require("mini.snippets").setup({})
+require("mini.completion").setup({})
+require("mini.files").setup({})
+require("mini.pick").setup({})
+
+-- Space as the leader key
+vim.g.mapleader = vim.keycode("<Space>")
+
+-- Keymaps
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap=true })
+vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename" })
+vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Goto Definition" })
+vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Goto References" })
+vim.keymap.set("n", "gI", vim.lsp.buf.implementation, { desc = "Goto Implementation" })
+vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, { desc = "Type Definition" })
+vim.keymap.set("n", "<leader>ds", vim.lsp.buf.document_symbol, { desc = "Document Symbols" })
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Diagnostic Open issue Info" })
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Diagnostic Show Locations" })
+vim.keymap.set("n", "<leader>fb", "<cmd>Pick buffers<cr>", { desc = "Search open files" })
+vim.keymap.set("n", "<leader>ff", "<cmd>Pick files<cr>", { desc = "Search all files" })
+vim.keymap.set("n", "<leader>fe", "<cmd>lua MiniFiles.open()<cr>", { desc="File explorer" })
+vim.keymap.set("n", "<leader>sg", "<cmd>Pick grep_live<cr>", { desc = "Search all files" })
+vim.keymap.set("n", "<leader>fh", "<cmd>Pick help<cr>", { desc = "Search help tags" })
+
+vim.keymap.set("n", "<leader>bl", [[:b#<CR>]], { desc = "Previous Buffer" })
+vim.keymap.set("n", "<leader>bh", [[:bn<CR>]], { desc = "Next Buffer" })
+
+vim.keymap.set("n", "<leader>tv", [[:vsplit | term<CR>]], { desc = "Terminal in Vertical Split" })
+vim.keymap.set("n", "<leader>tx", [[:split | term<CR>]], { desc = "Terminal in Horizontal Split" })
+vim.keymap.set("n", "<leader>tt", [[:tabnew | term<CR>]], { desc = "Terminal in New Tab" })
+
+vim.keymap.set("n", "<leader>lg", [[:tabnew | term lazygit<CR>]], { desc = "Lazy Git" })
+
+-- Autocmds
+vim.api.nvim_create_autocmd({ "TermOpen", "BufEnter" }, {
+    pattern = { "*" },
+    callback = function()
+        if vim.opt.buftype:get() == "terminal" then
+            vim.cmd(":startinsert")
+        end
+    end
+})
+
+-- List of compatible language servers is here:
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
+vim.lsp.enable({ "gopls", "rust_analyzer", "pyright", "ts_ls" })
+EOF

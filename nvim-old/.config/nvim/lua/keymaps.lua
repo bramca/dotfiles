@@ -12,7 +12,7 @@ vim.keymap.set('n', '<C-n>' , 'jzz', { silent = true })
 
 -- Keymaps
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap=true })
-vim.keymap.set("n", "<leader>nh", [[:nohl<CR>]], { desc = "No Highlight" })
+vim.keymap.set("n", "<leader>k", [[:nohl<CR>]], { desc = "No Highlight" })
 
 -- Maintenance
 vim.keymap.set("n", "<leader>L", [[:Lazy<CR>]], { desc = "Lazy Plugins" })
@@ -79,6 +79,7 @@ vim.keymap.set("n", "<leader>fr", require("snacks").picker.recent, { desc = "Fin
 vim.keymap.set("n", "<leader>fP", function() require("snacks").picker.files({ cwd = "~/dev" }) end, { desc = "Find Projects" })
 vim.keymap.set("n", "<leader>fn", function() require("snacks").picker.files({ cwd = "~/notes" }) end, { desc = "Find Notes" })
 vim.keymap.set("n", "<leader>fc", function() require("snacks").picker.files({ cwd = "~/dotfiles" }) end, { desc = "Find Config File" })
+vim.keymap.set("n", "<leader>fs", function() require("snacks").picker.files({ cwd = "~/temp/scripts" }) end, { desc = "Find Scripts" })
 vim.keymap.set("n", "<leader>f.", function() require("snacks").picker.files({ cwd = vim.fn.expand("%:p:h") }) end, { desc = "Find Files in Buffer Dir" })
 
 -- Grep

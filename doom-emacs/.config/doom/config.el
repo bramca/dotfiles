@@ -3,38 +3,30 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
-
-;; Some functionality uses this to identify you, e.g. GPG configuration, email
-;; clients, file templates and snippets. It is optional.
-;; (setq user-full-name "John Doe"
-;;       user-mail-address "john@doe.com")
-
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
 ;; - `doom-font' -- the primary font to use
 ;; - `doom-variable-pitch-font' -- a non-monospace font (where applicable)
 ;; - `doom-big-font' -- used for `doom-big-font-mode'; use this for
 ;;   presentations or streaming.
-;; - `doom-symbol-font' -- for symbols
+;; - `doom-unicode-font' -- for unicode glyphs
 ;; - `doom-serif-font' -- for the `fixed-pitch-serif' face
 ;;
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
-;;
-;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
-;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
+
+(setq doom-font (font-spec :family "FiraMono Nerd Font" :size 14 :weight 'semi-light)
+      doom-variable-pitch-font (font-spec :family "FiraMono Nerd Font" :size 14))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
 ;; refresh your font settings. If Emacs still can't find your font, it likely
 ;; wasn't installed correctly. Font issues are rarely Doom issues!
-(setq doom-font (font-spec :family "FiraMono Nerd Font" :size 16 :weight 'normal)
-      doom-variable-pitch-font (font-spec :family "FiraMono Nerd Font" :size 16))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-ayu-mirage)
+(setq doom-theme 'doom-palenight)
 
 ;; Set dashboard banner
 (defun my-dashboard-banner ()
@@ -58,7 +50,7 @@
                    " .+==@@@@#              .=--::-=++"
                    "   ====:                 .======-"
                    "      -                   :===:"
-))
+                   ))
          (longest-line (apply #'max (mapcar #'length banner))))
     (put-text-property
      (point)
@@ -128,4 +120,43 @@
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
-(require 'dap-dlv-go)
+;; source: https://nayak.io/posts/golang-development-doom-emacs/
+;; golang formatting set up
+;; use gofumpt
+(after! lsp-mode
+  (setq  lsp-go-use-gofumpt t)
+  )
+;; automatically organize imports
+(add-hook 'go-mode-hook #'lsp-deferred)
+;; Make sure you don't have other goimports hooks enabled.
+(defun lsp-go-install-save-hooks ()
+  (add-hook 'before-save-hook #'lsp-organize-imports t t))
+(add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+
+;; enable all analyzers; not done by default
+(after! lsp-mode
+  (setq  lsp-go-analyses '((fieldalignment . t)
+                           (nilness . t)
+                           (shadow . t)
+                           (unusedparams . t)
+                           (unusedwrite . t)
+                           (useany . t)
+                           (unusedvariable . t)))
+  )
+
+;; remove LSP delays
+(after! flycheck (setq flycheck-idle-change-delay 0.1))
+(after! lsp-mode
+  (setq lsp-idle-delay 0.1)
+  :custom
+  (setq lsp-completion-enable-additional-text-edit t)
+  (setq lsp-modeline-code-actions-enable t)
+  )
+
+;; load go-specific dap package
+(after! dap-mode
+  (require 'dap-dlv-go))
+
+;; Better debugging
+(use-package! dape)
+

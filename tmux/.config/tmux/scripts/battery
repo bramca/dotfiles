@@ -106,11 +106,6 @@ case $(uname -s) in
                         exit
                     fi
                 ;;
-                "FullyCharged")
-                    if [ "$value" = "Yes" ]; then
-                        exit
-                    fi
-                ;;
             esac
             if [[ -n "$maxcap" && -n $curcap ]]; then
                 echo $(( 100 * $curcap / $maxcap ))

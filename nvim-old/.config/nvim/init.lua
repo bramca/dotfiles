@@ -1,0 +1,37 @@
+require "opts"
+require "launch"
+
+spec("plugins.snacks")
+spec("plugins.autopairs")
+spec("plugins.bufferline")
+spec("plugins.colorizer")
+spec("plugins.colorscheme")
+spec("plugins.floaterm")
+spec("plugins.gitsigns")
+spec("plugins.lsp-config")
+spec("plugins.lualine")
+spec("plugins.markdown-preview")
+spec("plugins.mason")
+spec("plugins.merginal")
+spec("plugins.nvim-cmp")
+spec("plugins.nvim-dap-go")
+spec("plugins.nvim-dap")
+spec("plugins.nvim-dap-ui")
+spec("plugins.nvim-test")
+spec("plugins.orgmode")
+spec("plugins.rainbow-csv")
+spec("plugins.rest-nvim")
+spec("plugins.todo-comments")
+spec("plugins.treesitter")
+spec("plugins.treesitter-textojbects")
+spec("plugins.treesitter-context")
+spec("plugins.trouble")
+spec("plugins.vim-rooter")
+spec("plugins.vim-sleuth")
+spec("plugins.vim-table-mode")
+spec("plugins.which-key")
+spec("plugins.yazi")
+spec("plugins.harpoon")
+
+require "plugins.lazy"
+require "keymaps"
