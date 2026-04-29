@@ -52,6 +52,7 @@ example
 - [lazysql](https://github.com/jorgerojas26/lazysql): terminal database management
 - [yazi](https://github.com/sxyazi/yazi): terminal file manager
 - [gocovsh](https://github.com/orlangure/gocovsh): go test coverage in terminal
+- [opencode](https://opencode.ai/): using the powers of AI agents
 
 ## Other Stuff
 
