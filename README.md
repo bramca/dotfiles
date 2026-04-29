@@ -53,15 +53,15 @@ example
 - [yazi](https://github.com/sxyazi/yazi): terminal file manager
 - [gocovsh](https://github.com/orlangure/gocovsh): go test coverage in terminal
 - [opencode](https://opencode.ai/): using the powers of AI agents
+- [lynx](https://lynx.browser.org/): terminal browser
+- [postui](https://github.com/bramca/postui): run and test API requests
 
 ## Other Stuff
 
 - [wezterm](https://wezterm.org/): nice terminal emulator
+- [nvim](https://neovim.io/): main text editor of choice
 - [tmux](https://github.com/tmux/tmux/wiki): terminal multiplexer
 - [tmux-mem-cpu-load](https://github.com/thewtex/tmux-mem-cpu-load): see memory and cpu load in tmux status bar
 - [oh-by-bash](https://github.com/ohmybash/oh-my-bash): level up for bashrc
 - [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh): level up for zhsrc
-- [powerlevel10k](https://github.com/romkatv/powerlevel10k): nice shell theme for zsh
 - [imagemagick](https://imagemagick.org/script/download.php): image processing in the terminal
-- [nightfox](https://github.com/EdenEast/nightfox.nvim): colorscheme
-- [avante](https://github.com/yetone/avante.nvim): llm integration in neovim
