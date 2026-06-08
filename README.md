@@ -50,6 +50,7 @@ example
 - [lazygit](https://github.com/jesseduffield/lazygit): terminal ui for git doing git commands
 - [lazydocker](https://github.com/jesseduffield/lazydocker): terminal docker container management
 - [lazysql](https://github.com/jorgerojas26/lazysql): terminal database management
+- [k9s](https://k9scli.io): terminal ui for Kubernetes
 - [yazi](https://github.com/sxyazi/yazi): terminal file manager
 - [gocovsh](https://github.com/orlangure/gocovsh): go test coverage in terminal
 - [opencode](https://opencode.ai/): using the powers of AI agents
