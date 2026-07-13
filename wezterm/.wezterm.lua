@@ -160,12 +160,12 @@ config.keys = {
 		}),
 	},
 	{
-		key = "]",
+		key = ")",
 		mods = "CTRL|SHIFT",
 		action = act.SwitchWorkspaceRelative(1),
 	},
 	{
-		key = "[",
+		key = "(",
 		mods = "CTRL|SHIFT",
 		action = act.SwitchWorkspaceRelative(-1),
 	},
