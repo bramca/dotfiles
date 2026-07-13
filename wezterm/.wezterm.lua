@@ -159,7 +159,16 @@ config.keys = {
 			flags = "FUZZY|WORKSPACES",
 		}),
 	},
-	{ key = "i", mods = "CTRL|SHIFT", action = act.SwitchToWorkspace },
+	{
+		key = "]",
+		mods = "CTRL|SHIFT",
+		action = act.SwitchWorkspaceRelative(1),
+	},
+	{
+		key = "[",
+		mods = "CTRL|SHIFT",
+		action = act.SwitchWorkspaceRelative(-1),
+	},
 	{
 		key = "w",
 		mods = "CTRL|SHIFT",
